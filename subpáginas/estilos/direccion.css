@@ -1,0 +1,859 @@
+/* ============================================================
+   VARIABLES Y RESET
+   ============================================================ */
+:root {
+    --cian-neon: #00d4ff;
+    --cian-glow: rgba(0, 212, 255, 0.5);
+    --dark-bg: #050505;
+    --metal-gradient: linear-gradient(145deg, #2a2a2a, #111);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.page-director {
+    background-color: var(--dark-bg);
+    background-image: url('../../assets/header/fondo-panal.png');
+    color: white;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================================
+   NAVEGACIÓN (TEMA CIAN)
+   ============================================================ */
+/* --- 1. BARRA DE NAVEGACIÓN FIJA --- */
+.navbar-fixed {
+    position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+    background: #000; display: flex; justify-content: center;
+    align-items: center; z-index: 1000; border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+}
+
+.back-btn {
+    padding: 10px 25px; background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(129, 71, 255, 0.5); color: #fff;
+    border-radius: 5px; text-decoration: none; font-weight: 700;
+}
+/* HOVER: El neón se enciende */
+.back-btn.glass-btn-purple:hover {
+    background: #8147ff;
+    box-shadow: 0 0 15px #8147ff, 0 0 30px rgba(129, 71, 255, 0.6);
+    text-shadow: 0 0 5px #fff;
+    transform: translateY(-3px); /* Sube un poco */
+}
+
+/* ACTIVE: Se hunde y brilla más fuerte */
+.back-btn.glass-btn-purple:active {
+    transform: translateY(2px) scale(0.95); /* Se hunde */
+    box-shadow: 0 0 10px #8147ff, inset 0 0 10px rgba(0,0,0,0.5);
+    filter: brightness(1.4);
+    transition: all 0.1s;
+}
+/* Contenedor interno para alinear elementos */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Volver a la izq, Hamburguesa a la der */
+    align-items: center;
+    position: relative;
+}
+
+/* --- MENÚ HAMBURGUESA --- */
+.menu-hamburguesa {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Por encima del menú */
+}
+
+.menu-hamburguesa span {
+    width: 100%;
+    height: 4px;
+    background: #8147ff; /* Morado neón */
+    box-shadow: 0 0 10px rgba(129, 71, 255, 0.8);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- LISTA DESPLEGABLE --- */
+.nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(10, 10, 10, 0.98); /* Un poco más oscuro */
+    backdrop-filter: blur(15px);
+    border-left: 2px solid #8147ff;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9998; /* Justo debajo de la barra pero arriba del contenido */
+}
+
+.nav-menu.active {
+    right: 0; /* Se desliza hacia adentro */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* Animación de la hamburguesa (X) */
+.menu-hamburguesa.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+
+p, .tagline{
+    font-family: 'Antonio', sans-serif;
+    font-weight: 500;                   /* Grosor intermedio/fuerte */
+    font-size: 1.5rem;                  /* Tamaño grande para PC */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff !important;;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* ============================================================
+   HERO SECTION (ESTILO MONITOR)
+   ============================================================ */
+.director-hero {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.timecode {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-family: 'Courier New', monospace;
+    color: var(--cian-neon);
+    letter-spacing: 2px;
+    font-size: 1rem;
+    text-shadow: 0 0 5px var(--cian-neon);
+}
+
+.neon-text-cian {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px var(--cian-neon), 0 0 30px var(--cian-glow);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    color: #aaa;
+    text-transform: uppercase;
+}
+
+/* ============================================================
+   CONSOLA DE VIDEO (DISEÑO RACK)
+   ============================================================ */
+.video-console {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 30px;
+    margin-top: -40px;
+    margin-bottom: 60px;
+}
+
+.video-main-frame, .video-mini-frame {
+    background: #000;
+    border: 1px solid #222;
+    padding: 15px;
+    border-radius: 12px;
+    position: relative;
+    border: 1px solid var(--cian-neon);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    /*transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);  Efecto elástico 
+    cursor: pointer; */
+}
+
+/* Efecto de ILUMINACIÓN para AMBOS al pasar el mouse */
+.video-main-frame:hover, 
+.video-mini-frame:hover {
+    border-color: var(--cian-neon);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    /* transform: translateY(-5px) scale(1.01); Se levanta un poco */
+}
+
+.frame-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    color: var(--cian-neon);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+}
+
+.video-wrapper video {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: contain; /* Cambia a 'cover' si quieres que llene todo el cuadro negro */
+    background-color: #000;
+    border-radius: 4px;
+}
+
+.info-panel-metal {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOTÓN TÁCTICO METÁLICO */
+.metal-btn-tactical {
+    width: 70px;
+    height: 70px;
+    background: var(--metal-gradient);
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--cian-neon);
+    cursor: pointer;
+    box-shadow: 6px 6px 15px #000, -2px -2px 10px #222;
+    transition: all 0.2s ease;
+    margin-bottom: 15px;
+}
+
+.metal-btn-tactical:hover {
+    color: #fff;
+    box-shadow: 0 0 15px var(--cian-glow);
+}
+
+.metal-btn-tactical:active {
+    transform: scale(0.92);
+    box-shadow: inset 4px 4px 10px #000, inset -2px -2px 5px #222;
+}
+
+/* --- RESET Y VARIABLES (SI NO LAS TIENES YA) --- */
+:root {
+    --cian-neon: #00d4ff;
+    --cian-glow: rgba(0, 212, 255, 0.5);
+    --metal-gradient: linear-gradient(145deg, #2a2a2a, #111);
+}
+
+/* --- CONSOLA ESTILO APPLE MUSIC NEÓN --- */
+.video-secondary-grid {
+    display: flex;       /* Activa el comportamiento de caja */
+    flex-direction: column; /* Apila uno arriba del otro */
+    gap: 4.5px;          /* <--- ESTE VALOR separa las dos secciones. Ajústalo a tu gusto */
+    width: 100%;        /* Asegura que ocupen todo el ancho de la columna */
+}
+
+#mixer-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 5.5px; /* Aumentado para que respire mejor */
+    background: rgba(10, 10, 10, 0.95) !important;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    /* --- ESTO AGREGA EL NEÓN --- */
+    border: 1px solid var(--cian-neon); 
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease; /* Para que el brillo al hacer hover sea suave */
+}
+#mixer-panel:hover {
+    border-color: var(--cian-neon);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    /* Opcional: si quieres que se levante un poco como el video: */
+    /* transform: translateY(-2px); */
+}
+
+.frame-title-cyber {
+    font-size: 0.8rem;
+    color: var(--cian-neon);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--cian-glow);
+}
+
+.apple-style-console {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr; /* Le damos más espacio a los controles */
+    gap: 30px;
+    justify-items: start; /* <--- Mueve todo hacia la IZQUIERDA */
+    align-items: start;
+    width: 90%; /* Este fué el último cambio */
+}
+
+/* --- COLUMNA DE CONTROLES (IZQUIERDA) --- */
+.apple-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+/* Barra de progreso (SeekBar) */
+.progress-container-cyber {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.time-label-cyber {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.seekbar-background {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.seekbar-fill-cyber {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--cian-neon);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--cian-glow);
+    width: 46%; /* Sincronizado con el value inicial */
+    pointer-events: none;
+}
+
+/* Botones de Reproducción */
+.playback-buttons-cyber {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.metal-btn-large, .metal-btn-small {
+    background: var(--metal-gradient);
+    border-radius: 50%;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--cian-neon);
+    box-shadow: 4px 4px 10px #000, -2px -2px 6px #333;
+    transition: 0.2s;
+}
+
+.metal-btn-large {
+    width: 40px;
+    height: 40px; /* Antes 75px */
+    font-size: 1.2rem; /* Antes 2rem */
+}
+
+.metal-btn-small {
+    width: 30px;
+    height: 30px; /* Antes 55px */
+    font-size: 0.9rem; /* Antes 1.2rem */
+}
+
+.metal-btn-large:hover, .metal-btn-small:hover {
+    color: #fff;
+    box-shadow: 0 0 15px var(--cian-glow);
+}
+
+.metal-btn-large:active, .metal-btn-small:active {
+    transform: scale(0.94);
+    box-shadow: inset 4px 4px 10px #000, inset -2px -2px 5px #222;
+}
+
+/* Fader de Volumen */
+.volume-container-cyber {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 90%;
+}
+
+.volume-icon-cyber {
+    color: #888; font-size: 1rem;
+}
+
+.volume-fader-background {
+    position: relative;
+    width: 100%; height: 5px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.volume-fill-cyber {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: #fff; /* Volumen en blanco como Apple Music */
+    border-radius: 10px;
+    width: 70%; /* Sincronizado con el value inicial */
+    pointer-events: none;
+}
+
+.panel-tag-cyber {
+    font-size: 0.5rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-top: 6px;
+}
+
+/* Ocultar los inputs reales para usar los fills personalizados */
+input[type="range"]#mobile-seekbar, input[type="range"]#vol-fader-mini {
+    position: absolute;
+    width: 100%; height: 100%;
+    opacity: 0; /* Lo hacemos invisible pero clickeable */
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* --- COLUMNA DE PANTALLA (DERECHA, SIN CAMBIOS) --- */
+.mixer-screen-frame {
+    width: 110%; /* Que use todo el 2fr del grid */
+    background: #000;
+    border: 2px solid #222;
+    border-radius: 10px;
+    overflow: hidden;
+    line-height: 0; /* Elimina espacios fantasma debajo del video */
+}
+
+#mini-screen-video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================================
+   SEO CARDS (EXPERTICE)
+   ============================================================ */
+
+.seo-card {
+    /* Color negro sólido con 90% de opacidad */
+    background: rgba(10, 10, 10, 0.5) !important; 
+    border: 2px solid #034a57;
+    padding: 40px;
+    border-radius: 15px;
+    transition: 0.4s;
+    position: relative;
+    backdrop-filter: blur(5px); /* Esto asegura que el panal no distraiga */
+}
+
+.seo-expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 80px;
+}
+
+.seo-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #038394;
+    padding: 40px;
+    border-radius: 15px;
+    transition: 0.4s;
+    position: relative;
+}
+
+.seo-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    background: var(--cian-neon);
+    transition: 0.4s;
+    box-shadow: 0 0 10px var(--cian-neon);
+}
+
+.seo-card:hover {
+    background: rgba(0, 212, 255, 0.05);
+    border-color: var(--cian-neon);
+    transform: translateY(-10px);
+}
+
+.seo-card:hover::after {
+    width: 80%;
+    left: 10%;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: var(--cian-neon);
+    margin-bottom: 20px;
+}
+
+.seo-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.seo-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   CINTA DE CINE (FILMSTRIP)
+   ============================================================ */
+.references-film {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-title-cian {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    color: var(--cian-neon);
+}
+
+.filmstrip {
+    background: #000;
+    padding: 40px 0;
+    border-top: 5px solid #111;
+    border-bottom: 5px solid #111;
+    overflow: hidden;
+    position: relative;
+}
+
+.filmstrip-track {
+    display: flex;
+    width: max-content;
+    animation: scrollFilm 30s linear infinite;
+}
+
+.film-item {
+    width: 220px;
+    padding: 0 50px;
+    filter: grayscale(1) opacity(0.5);
+    transition: 0.4s;
+}
+
+.film-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.film-item:hover {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.1);
+}
+
+@keyframes scrollFilm {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   FOOTER Y BOTÓN VOLVER
+   ============================================================ */
+.director-footer {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.glass-btn-cian {
+    padding: 15px 40px;
+    border: 2px solid var(--cian-neon);
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: 0.3s;
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+.glass-btn-cian:hover {
+    background: var(--cian-neon);
+    color: #000;
+    box-shadow: 0 0 30px var(--cian-neon);
+}
+
+/* --- Footer --- */
+.section-row { display: flex; justify-content: center; gap: 135px; margin-top: 40px; margin-bottom: 30px; }
+
+/* --- Navegación Secundaria --- */
+.secondary-nav {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px 0;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.secondary-nav .nav-links a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.secondary-nav .nav-links a:hover {
+    color: #fff;
+}
+
+/* --- Footer Principal (Datos y Redes) --- */
+.main-footer {
+    background: #111;
+    padding: 40px 0;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #222;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Iconos de Redes Sociales Biselados */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    /* Efecto Biselado similar a tus botones */
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #000;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: #444;
+    color: #ffaa00; /* Color de realce (Naranja como tu botón de Brief) */
+}
+
+.footer-info {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+/* ============================================================
+   RESPONSIVE FINAL: CORRECCIÓN DE TÍTULOS AMONTONADOS
+   ============================================================ */
+
+@media (max-width: 992px) {
+    /* Forzar que el grid sea de una sola columna */
+    .video-console, .seo-expertise-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Reducción drástica de los títulos neón grandes */
+    .neon-text-cian {
+        font-size: 1.8rem !important; /* Bajamos de 3rem a 1.8rem */
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    /* Ajuste para el subtítulo "LA VISIÓN ESTRATÉGICA..." */
+    p, .tagline { 
+        font-size: 0.9rem !important; /* <--- Cambia este valor (ej. 0.8rem o 12px) */
+        letter-spacing: .3px !important;
+        line-height: 1.4;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* --- CONSOLA DE CONTROL --- */
+    #mixer-panel {
+        padding: 10px !important;
+    }
+
+    /* Título de la consola: "CONSOLA DE CONTROL..." */
+    .frame-title-cyber {
+        font-size: 0.6rem !important;
+        text-align: center !important;
+    }
+
+    /* Evitar que los tiempos y la barra choquen */
+    .progress-container-cyber {
+        gap: 5px !important;
+        justify-content: space-between;
+    }
+
+    .time-label-cyber {
+        font-size: 0.65rem !important;
+        min-width: 35px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Títulos aún más pequeños en teléfonos mini */
+    .neon-text-cian {
+        font-size: 1.5rem !important;
+    }
+
+    /* Ocultar elementos que estorben */
+    .timecode {
+        display: none !important;
+    }
+
+    /* Hacer que los botones tácticos no se vean gigantes */
+    .metal-btn-large {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}

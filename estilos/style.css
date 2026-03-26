@@ -1,0 +1,962 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- Reset y Fondo --- */
+body {
+    background-color: #0c0c0c;
+    margin: 0;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Antonio', Gadget, sans-serif;
+}
+
+.bg-texture {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('../assets/header/fondo-panal.png') repeat;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+/* --- NUEVA BARRA DE NAVEGACIÓN FIJA --- */
+/* Contenedor interno para alinear elementos */
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #000000; /* 1. Fondo negro sólido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* 2. Un valor muy alto para que NADA la tape */
+    border-bottom: 1px solid rgba(129, 71, 255, 0.3);
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10000; /* Asegura que lo de adentro también esté arriba */
+}
+
+/* --- MENÚ HAMBURGUESA --- */
+.menu-hamburguesa {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Por encima del menú */
+}
+
+.menu-hamburguesa span {
+    width: 100%;
+    height: 4px;
+    background: #8147ff; /* Morado neón */
+    box-shadow: 0 0 10px rgba(129, 71, 255, 0.8);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- LISTA DESPLEGABLE --- */
+.nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(10, 10, 10, 0.98); /* Un poco más oscuro */
+    backdrop-filter: blur(15px);
+    border-left: 2px solid #8147ff;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9998; /* Justo debajo de la barra pero arriba del contenido */
+}
+
+.nav-menu.active {
+    right: 0; /* Se desliza hacia adentro */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* Animación de la hamburguesa (X) */
+.menu-hamburguesa.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* --- ESTILOS DEL BUSCADOR (Integrados) --- */
+.search-container { position: relative; width: 280px; }
+#searchInput {
+    width: 100%; padding: 8px 15px; background: rgba(255,255,255,0.1);
+    border: 1px solid #8147ff; border-radius: 20px; color: #fff; outline: none;
+}
+.search-results-box {
+    position: absolute; top: 45px; left: 0; width: 100%;
+    background: rgba(0,0,0,0.95); border: 1px solid #8147ff;
+    border-radius: 10px; display: none; z-index: 1100;
+}
+.result-item {
+    border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+    transition: background 0.3s;
+}
+.result-item:hover {
+    background: rgba(129, 71, 255, 0.1);
+}
+
+/* --- CAMBIO DE NOMBRE: Identidad Visual --- */
+.hero-identity { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px;
+    margin-top: 100px; /* Espacio para que la barra fija no lo tape */
+}
+
+/* Tus estilos originales de profile, logo y mic se mantienen igual, 
+   solo asegúrate de que apunten a .hero-identity si es necesario */
+.hero-identity .profile-area img { width: 335px; height: auto; }
+.hero-identity .logo-area .main-logo { width: 600px; height: auto; }
+.hero-identity .mic-area img { width: 240px; height: auto; }
+
+/* --- Resto de tu CSS (Slogans, Grid, Botones 3D, Móvil) se mantiene IGUAL --- */
+.main-container {
+    max-width: 1400px; /* Más ancho para la disposición central */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Hero y Slogans --- */
+.hero-identity { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.profile-area img { width: 335px; height: auto; }
+.logo-area .main-logo { width: 600px; height: auto; }
+.mic-area img { width: 240px; height: auto; }
+
+.slogans { text-align: center; margin-bottom: 30px; }
+.red-title { color: #f44336; font-size: 2.5rem; text-shadow: 2px 2px 3px black; margin: 0; }
+.white-subtitle { font-size: 1.2rem; margin-top: 5px; font-family: Anton, sans-serif; font-weight: normal; }
+
+/* --- Grid Central --- */
+.grid-layout {
+    display: grid;
+    /* Reducimos el centro a 420px y el espacio entre columnas (gap) a 40px */
+    grid-template-columns: 330px 420px 300px;
+    gap: 100px; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.tv-slider {
+    width: 100% ;
+    max-width: 420px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden; /* Escondemos los videos que no están en vista */
+    border-radius: 8px;
+    background: #000;
+    border: 6px solid #080808;
+}
+
+.slides-container {
+    display: flex;
+    width: 301%; /* 100% por cada video */
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide {
+    width: 33.333% !important; /* Mantenemos el ancho para los 3 videos */
+    height: 100% !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto hará que llene el espacio sin deformarse */
+}
+
+/* Puntitos de navegación */
+.slider-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: #00d9ff; /* Cian para combinar con tus botones */
+    box-shadow: 0 0 10px #00d9ff;
+}
+
+
+.video-hint {
+    position: absolute;
+    top: 15px; /* Cambiado de bottom a top */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none; 
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Un borde sutil para que resalte más arriba */
+}
+
+/* --- BOTONES INTERACTIVOS 3D --- */
+.custom-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 30px; /* Más espacio vertical */
+    position: relative;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+    transition: all 0.2s;
+}
+
+.icon-holder {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+    /* 1. FONDO: Degradado lineal sutil para el metal plano */
+    background: linear-gradient(135deg, #a6a6a6 0%, #808080 100%);
+
+    /* 2. EL MARCO (Bisel Exterior): */
+    /* Usamos un borde sólido con colores que imitan el ángulo de luz */
+    border-top: 4px solid #cecece;   /* Luz superior */
+    border-left: 4px solid #b1b1b1;
+    border-right: 4px solid #6b6b6b;
+    border-bottom: 4px solid #4a4a4a; /* Sombra inferior */
+    
+    box-sizing: border-box;
+
+    /* 3. LAS SOMBRAS (El efecto cóncavo y el relieve) */
+    box-shadow: 
+        /* Relieve exterior sobre el fondo negro */
+        6px 10px 15px rgba(0, 0, 0, 0.8),
+        
+        /* HUNDIMIENTO CÓNCAVO (Sombras internas): */
+        /* Sombra superior interna para dar profundidad */
+        inset 0 12px 12px rgba(0, 0, 0, 0.4),
+        /* Luz inferior interna para marcar el borde del "tazón" */
+        inset 0 -8px 10px rgba(255, 255, 255, 0.3),
+        /* Oscuridad general en el fondo para profundidad total */
+        inset 0 0 25px rgba(0, 0, 0, 0.5);
+
+    transition: all 0.3s ease;
+}
+
+/* Efecto Hover para resaltar el filo al interactuar */
+.custom-btn:hover .icon-holder {
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #000;
+    box-shadow: 
+        8px 12px 20px rgba(0,0,0,0.9),
+        inset 0 4px 0 rgba(255,255,255,1),
+        inset 0 -4px 0 rgba(0,0,0,0.8),
+        inset 0 0 25px rgba(0,0,0,0.6);
+    transform: scale(1.05);
+}
+
+/* --- Efecto al pasar el mouse (Manteniendo el cóncavo nítido) --- */
+.custom-btn:hover .icon-holder {
+    box-shadow: 
+        5px 8px 15px rgba(0,0,0,0.8), /* Sombra externa más fuerte */
+        inset 0 5px 5px rgba(255,255,255,1), /* Bisel superior más brillante y nítido */
+        inset 0 -6px 6px rgba(0,0,0,0.7), /* Bisel inferior más oscuro y nítido */
+        inset 0 0 20px 4px rgba(0,0,0,0.5); /* Sombra central nítida más fuerte */
+    transform: translateY(-2px);
+}
+/* Estilo para WhatsApp (el logo debe verse normal, no pop-out) */
+.icon-holder img { width: 65%; height: auto; transition: transform 0.2s; }
+
+/* 2. EL PERSONAJE QUE SOBRESALE (Pop-Out) */
+.icon-holder img.pop-out {
+    width: 100%; /* El PNG debe tener el recorte perfecto */
+    height: auto;
+    position: absolute;
+    bottom: -10px; /* Sobresale hacia abajo */
+    transform: scale(1.1); /* Ligeramente más grande */
+}
+
+/* 3. EL RECTÁNGULO BISelado 3D DEL BOTÓN */
+.btn-text {
+    margin-left: -40px; /* Superposición */
+    padding: 10px 15px 10px 50px; /* Espacio para el texto y no chocar con el círculo */
+    height: 50px; /* Más alto y menos largo */
+    color: white;
+    font-family: 'Poppins', sans-serif; /* Cambia la fuente aquí */
+    font-weight: 300; /* Esto le da el aspecto delgado y elegante */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+    z-index: 1; /* Debajo del círculo */
+    min-width: 100px;
+    display: flex; align-items: center;
+    
+    /* EFECTO 3D BISelado: Sombreado interno y bordes iluminados */
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.4), /* Borde superior iluminado */
+        inset 0 -1px 0 rgba(0,0,0,0.4),    /* Borde inferior sombreado */
+        inset 0 10px 10px rgba(0,0,0,0.1),  /* Sombra interna superior sutil */
+        inset 0 -10px 10px rgba(0,0,0,0.1); /* Sombra interna inferior sutil */
+}
+
+/* Colores Específicos con Gradientes y Sombreados de la Imagen */
+.purple .btn-text {
+    background: linear-gradient(180deg, #8147ff 0%, #6200ea 100%);
+    border-bottom: 3px solid #310075;
+}
+.orange .btn-text {
+    background: linear-gradient(180deg, #ffab40 0%, #ff6d00 100%);
+    border-bottom: 3px solid #b34d00;
+    color: #ffffff;
+}
+/* --- Ajuste Especial para Botón de Brief --- */
+.btn-brief .btn-text {
+    min-width: 120px;      /* Lo hacemos notablemente más corto */
+    height: 60px;          /* Aumentamos un poco el alto para las 2 líneas */
+    line-height: 1.1;      /* Reduce el espacio entre las dos líneas de texto */
+    padding-left: 45px;    /* Espacio para que no choque con el círculo */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; /* Centra el texto verticalmente */
+    font-size: 13px;       /* Reducimos un punto la letra para que quepa bien */
+    text-align: left;
+}
+
+/* Si usas Poppins, esto asegura que el salto de línea se respete */
+.btn-brief br {
+    display: block;
+    content: "";
+    margin-top: 2px;
+}
+
+.whatsapp .btn-text {
+    background: linear-gradient(180deg, #69f0ae 0%, #00c853 100%);
+    border-bottom: 3px solid #00662a;
+    color: #ffffff;
+}
+.red .btn-text {
+    background: linear-gradient(180deg, #ff5252 0%, #d50000 100%);
+    border-bottom: 3px solid #7a0000;
+}
+
+/* Animaciones */
+.custom-btn:hover { filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
+.custom-btn:hover .icon-holder img.pop-out { transform: scale(1.15) translateY(-3px); }
+
+/* Clase de JavaScript para hundido */
+.custom-btn.is-active { transform: translateY(2px) scale(0.98); }
+
+/* --- Ajuste Individual para Demo Director --- */
+.btn-locutor {
+    margin-left: 90px; /* Aumenta este número (ej. 60px, 80px) para acercarlo más al centro */
+    transition: 0.3s ease; /* Para que el movimiento se vea suave si haces cambios */
+}
+
+/* Contenedor del Modal */
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(15, 15, 15, 0.98);
+    border: 2px solid #00f2ff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    z-index: 2000;
+    box-shadow: 0 0 40px rgba(0, 242, 255, 0.5);
+    padding: 30px;
+    text-align: center;
+}
+
+.modal-title {
+    color: #00f2ff;
+    font-family: 'Antonio', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilo de los items (La "Cápsula") */
+.modal-item {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Espacio entre icono y texto */
+}
+
+/* El icono tiene un color cian tenue por defecto */
+.modal-item i {
+    color: #00f2ff;
+    font-size: 1.1rem;
+    width: 20px;
+}
+
+/* EFECTO HOVER (Lo que pediste) */
+.modal-item:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: #00f2ff;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    transform: scale(1.02);
+    color: #00f2ff;
+}
+
+/* Resaltado especial para el correo (opcional, como en tu imagen) */
+.item-highlight {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-close-modal {
+    margin-top: 25px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Antonio', sans-serif;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-close-modal:hover {
+    background: #cc0000;
+}
+
+/* --- SECCIÓN DE MARCAS TOTALMENTE INDEPENDIENTE --- */
+.brand-section {
+    width: 100vw;               /* Ocupa el 100% del ancho de la pantalla */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;         /* Centrado absoluto respecto a la ventana */
+    margin-right: -50vw;
+    padding: 30px 0;            /* Más espacio para que no choque con lo de arriba */
+    background: rgba(10, 10, 10, 0.8); /* Fondo independiente */
+    border-top: 1px solid rgba(129, 71, 255, 0.2);
+    border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+    overflow: hidden;           /* Crucial para que el slider no cree scroll horizontal */
+}
+
+.section-title {
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    opacity: 0.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* El contenedor del carrusel */
+.slider {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+/* La pista que se mueve (AJUSTE DE ANCHO) */
+.slide-track {
+    display: flex;
+    /* 200px por cada logo. Tienes 16 logos en el HTML: 200 * 16 = 3200px */
+    width: calc(55px * 16); 
+    animation: scrollLogos 40s linear infinite;
+}
+
+.slide {
+    width: 200px; /* Ancho fijo por logo */
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide img {
+    height: 100px; /* Altura uniforme para todos los logos */
+    width: auto;
+    filter: grayscale(1) brightness(2);
+    opacity: 0.5;
+    transition: 0.4s ease;
+}
+
+.slide img:hover {
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Animación corregida para 16 logos (se resetea a la mitad: 8 logos) */
+@keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-200px * 8)); } 
+}
+
+/* --- Footer --- */
+.section-row { display: flex; justify-content: center; gap: 135px; margin-top: 40px; margin-bottom: 30px; }
+
+/* --- Navegación Secundaria --- */
+.secondary-nav {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px 0;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.secondary-nav .nav-links a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.secondary-nav .nav-links a:hover {
+    color: #fff;
+}
+
+/* --- Footer Principal (Datos y Redes) --- */
+.main-footer {
+    background: #111;
+    padding: 40px 0;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #222;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Iconos de Redes Sociales Biselados */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    /* Efecto Biselado similar a tus botones */
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #000;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: #444;
+    color: #ffaa00; /* Color de realce (Naranja como tu botón de Brief) */
+}
+
+.footer-info {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+/* --- CONFIGURACIÓN PARA MÓVIL (Basado en tu imagen de referencia) --- */
+/* ==========================================================================
+   2. CONFIGURACIÓN PARA MÓVIL (Blindada)
+   ========================================================================== */
+/* --- CONFIGURACIÓN PARA MÓVIL (Basado en tu imagen de referencia) --- */
+
+    /* --- OPTIMIZACIÓN DE NAVEGACIÓN DENTRO DEL MEDIA QUERY --- */
+@media (max-width: 768px) {
+
+    /* 1. Ajuste de la Barra Fija */
+    .navbar-fixed {
+        height: 70px; /* Un poco más delgada en móvil */
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 2px solid #8147ff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-container {
+        width: 95%; /* Más espacio lateral */
+        padding: 0 10px;
+    }
+
+    /* 2. Buscador Optimizado para Pulgares */
+    .search-container {
+        width: 65%; /* Más ancho para facilitar el clic */
+    }
+
+    #searchInput {
+        height: 40px;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(129, 71, 255, 0.5);
+        border-radius: 12px; /* Menos redondeado, más moderno */
+    }
+
+    #searchInput:focus {
+        border-color: #00d9ff; /* Cambia a azul neón como tus botones */
+        box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+    }
+
+    /* 3. Menú Hamburguesa más visible */
+    .menu-hamburguesa {
+        width: 30px;
+        height: 22px;
+    }
+
+    .menu-hamburguesa span {
+        height: 3px;
+        background: #00d9ff; /* Azul neón para hacer juego con los botones móviles */
+    }
+
+    /* 4. Menú Lateral (Drawer) */
+    .nav-menu {
+        top: 70px;
+        width: 80%; /* No ocupa todo el ancho, se ve más elegante */
+        height: calc(100vh - 70px);
+        background: linear-gradient(180deg, #000 0%, #0c0c0c 100%);
+        border-left: 3px solid #00d9ff;
+    }
+
+    .nav-menu ul {
+        padding: 40px 25px;
+        gap: 15px;
+    }
+
+    .nav-menu ul li a {
+        font-size: 1rem;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* 5. Resultados de búsqueda en móvil */
+    .search-results-box {
+        position: fixed; /* Ocupa la pantalla para evitar scroll molesto */
+        top: 75px;
+        left: 5%;
+        width: 90%;
+        max-height: 60vh;
+        overflow-y: auto;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    /* 6. Compensación de espacio */
+    /* Como la barra es fixed, empujamos el contenido hacia abajo */
+    .main-container {
+        padding-top: 85px !important; /* Evita que la barra tape los slogans */
+    }
+    
+    /* 1. Fondo y Contenedor General */
+    body {
+        background-color: #0c0c0c; /* Fondo oscuro profundo */
+        background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+        background-size: 20px 20px; /* Textura de puntos sutil */
+    }
+
+    .main-container {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 2. Reordenar Header y Slogans (Los slogans van arriba) */
+    .slogans {
+        order: -3;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .red-title {
+        color: #ff3a1a;
+        font-size: 25px;
+        font-weight: 800;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .white-subtitle {
+        color: #ffffff;
+        font-size: 10.6px;
+        letter-spacing: 1px;
+    }
+
+    /* 3. Hero Adaptado (Javo a la izquierda, Texto a la derecha) */
+    .hero-identity {
+    order: -2;
+    display: grid;
+    /* 100px para la foto, el resto para el logo */
+    grid-template-columns: 150px 50fr; 
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    /* Quitamos el max-width de 100px que causaba el amontonamiento */
+    max-width: 400px; 
+    margin: -20px auto 10px auto; /* El -20px lo sube hacia los slogans */
+}
+
+    .profile-area img {
+        width: 100%; /* Ajusta tu imagen de logo aquí */
+        height: auto;
+        max-width: 200px;
+    }
+
+    /* El logo-area ahora se comporta como el texto "Javier Rivero EL JAVO" */
+    .logo-area {
+        text-align: left;
+    display: flex;
+    align-items: center;
+    }
+
+    .main-logo {
+        width: 100%; /* Ajusta tu imagen de logo aquí */
+        height: auto;
+        max-width: 230px;
+    }
+
+    /* Micrófono centrado abajo del nombre */
+.mic-area {
+    grid-column: span 2; /* Se ajusta al ancho de las 2 columnas del header */
+    text-align: center;
+    margin-top: -20px;   /* AJUSTA ESTE VALOR: Mientras más negativo, más sube */
+    margin-bottom: 10px; 
+    z-index: 10;         /* Asegura que el mic quede por encima si se traslapa */
+}
+
+.mic-img {
+    width: 190px !important;
+    height: auto !important;
+    display: inline-block; /* Evita espacios extra debajo de la imagen */
+}
+
+    /* 4. Ocultar el Video */
+    .video-wrapper, .tv-box {
+        display: none !important;
+    }
+    /* Grid de botones en 2 columnas */
+    .grid-layout, .section-row {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 15px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+        order: -1 !important;
+    }
+
+    .column { display: contents !important; }
+
+    /* Transformación a Botones Neón Negros */
+    .custom-btn {
+        height: 55px !important;
+        background: #000 !important; /* Relleno Negro */
+        border-radius: 8px !important;
+        margin: 0 !important;
+        justify-content: center !important;
+        filter: none !important;
+    }
+
+    .icon-holder { display: none !important; } /* Ocultar círculos en móvil */
+
+    .btn-text {
+        margin: 0 !important;
+        padding: 0 5px !important;
+        background: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        height: 100% !important;
+        width: 100% !important;
+        justify-content: center !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        text-transform: uppercase;
+    }
+
+    /* Colores de bordes (Neon) */
+    .purple, .red { border: 2px solid #00d9ff !important; box-shadow: 0 0 10px rgba(0, 217, 255, 0.3) !important; }
+    .servicios-btn, .contacto-btn { border: 2px solid #ff7b00 !important; box-shadow: 0 0 10px rgba(255, 123, 0, 0.3) !important; }
+
+    /* Reordenar: WhatsApp y Brief al principio */
+    .whatsapp { 
+        order: -3 !important; 
+        background: #00bb2d !important; 
+        border: none !important; 
+        grid-column: 1 / 2;
+    }
+    .btn-brief { 
+        order: -2 !important; 
+        background: #ff8c00 !important; 
+        border: none !important;
+        grid-column: 2 / 3;
+    }
+
+/* EFECTO DE ILUMINACIÓN (Hover simulado para móvil) */
+    /* En móvil, esto se activa brevemente al tocar */
+    .custom-btn:active, .custom-btn:hover {
+        filter: brightness(1.2) !important;
+        transition: filter 0.1s ease;
+    }
+
+    /* EFECTO DE HUNDIMIENTO (La clase que activa el JS) */
+    .custom-btn.is-active {
+        transform: scale(0.95) translateY(2px) !important;
+        filter: brightness(0.9) !important;
+        box-shadow: inset 0 4px 10px rgba(0,0,0,0.5) !important;
+        transition: transform 0.05s ease;
+    }
+
+    /* Brillo extra específico para los bordes Neón al tocar */
+    .purple.is-active { box-shadow: 0 0 20px rgba(0, 217, 255, 0.6) !important; }
+    .btn-locutor.is-active, .servicios-btn.is-active { 
+        box-shadow: 0 0 20px rgba(255, 123, 0, 0.6) !important; 
+    }
+
+}

@@ -1,0 +1,1036 @@
+:root {
+    --purple-neon: #a855f7;
+    --green-neon: #22c55e;
+    --dark-bg: #0a0a0a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* HEADER CON FONDO NEGRO */
+.mini-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: #000000; /* Negro sólido */
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid #333; /* Opcional: una línea sutil para dividir */
+}
+
+
+/* Estado presionado del botón de descarga */
+.is-active {
+    transform: scale(0.92) translateY(3px);
+    filter: brightness(1.2);
+}
+
+/* TEXTURA DE PANAL (Solo para el contenido) */
+.bg-texture {
+    background-image: url('../../assets/header/fondo-panal.png');
+    background-attachment: fixed;
+    background-size: 800px;
+    background-repeat: repeat;
+    background-color: #0a0a0a;
+    min-height: 100vh; /* Asegura que cubra el resto de la pantalla */
+}
+
+/* ELIMINAR fondo del body para evitar conflictos */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+/* 2. HEADER CON LOGO CENTRADO */
+.mini-header {
+    display: flex;
+    justify-content: center; /* Centra el logo */
+    align-items: center;
+    padding: 20px 5%;
+    position: relative; /* Necesario para posicionar el botón */
+    min-height: 80px;
+}
+
+.mini-logo {
+    height: 60px; /* Tamaño del logo un 30% más pequeño como pediste */
+    width: auto;
+}
+
+.btn-back {
+    position: absolute;
+    right: 5%; /* Lo pega a la derecha */
+    color: white;
+    text-decoration: none;
+    font-family: 'Antonio', sans-serif;
+    font-size: 0.9rem;
+    border: 2px solid #a855f7; /* Color morado neón de la línea */
+    padding: 8px 20px;
+    border-radius: 5px;
+    background: rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+/* 1. CONTENEDOR PRINCIPAL (FLEXBOX HORIZONTAL) */
+.hero-trayectoria {
+    display: flex;
+    align-items: center; /* Centra verticalmente imagen y texto */
+    justify-content: center; /* Centra el bloque completo en la pantalla */
+    gap: 50px; /* Espacio entre la foto y el texto */
+    padding: 60px 10% 0px; /* Reducimos el tercer valor (bottom) a 20px */
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor */
+}
+
+/* 2. EL MARCO DE LA FOTO (QUITAMOS EL CÍRCULO CONIC) */
+.profile-frame {
+    flex-shrink: 0; /* Evita que la foto se aplaste */
+    width: 350px;  /* Tamaño más grande según la maqueta */
+    height: auto;
+    margin: 0;     /* Quitamos el margin auto para que no se centre solo */
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+    border-radius: 0; /* Quitamos el círculo si la foto ya tiene su forma de manchas */
+    object-fit: contain;
+    border: none;    /* Quitamos el borde sólido */
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4)); /* Brillo sutil */
+}
+
+.hero-text-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 800px; /* Ajusta según el ancho de tu título */
+}
+
+.hero-text-container h1 {
+    font-family: 'Antonio', sans-serif;
+    font-size: 5.5rem; /* Tamaño masivo para que entre en una línea */
+    color: #ffffff;    /* LETRA BLANCA */
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap; /* FUERZA UNA SOLA LÍNEA */
+    text-transform: uppercase;
+    /* BRILLO ROJO INTENSO (Múltiples capas para saturación) */
+    text-shadow: 
+        0 0 10px rgba(255, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.8),
+        0 0 40px rgba(255, 0, 0, 0.9),
+        0 0 60px rgba(255, 0, 0, 1);
+}
+
+.subtitle {
+    font-family: 'Antonio', sans-serif;
+    font-size: 1.45rem; /* Ajustado para que el estirado se vea natural */
+    color: #ffffff;
+    margin-top: 5px;
+    text-transform: uppercase;
+    font-weight: 300;
+    white-space: nowrap;
+    /* EL TRUCO PARA LA MISMA LONGITUD */
+    display: block;
+    text-align: justify;
+    text-align-last: justify; 
+    letter-spacing: 0.48em; /* Ajusta este valor hasta que los bordes coincidan con el título */
+}
+/* ELIMINAR ANIMACIÓN SI ESTÁ ESTORBANDO VISUALMENTE */
+@keyframes rotate-border {
+    /* Puedes borrar esta sección si ya no usas el borde giratorio */
+}
+
+/* ==========================================================
+   NUEVA FRANJA DE TRANSICIÓN (BOTÓN MORADO 3D BRILLANTE)
+   ========================================================== */
+.transition-button-container {
+    display: flex;
+    justify-content: center; /* Centra el botón en la pantalla */
+    margin: -300px auto 40px; /* Margen superior e inferior */
+    width: 100%;
+    padding: 0 5%;
+}
+
+.transition-button {
+    /* Fondo morado vibrante con degradado sutil para efecto 3D */
+    background: linear-gradient(180deg, #7c3aed 0%, #6d28d9 100%);
+    
+    /* Texto */
+    color: #ffffff; /* Tipografía Blanca */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    
+    /* Forma y Espaciado */
+    padding: 15px 30px; /* Ajusta este padding para que el texto respire */
+    border-radius: 8px; /* Muy redondeado, estilo cápsula */
+    display: inline-block; /* Se ajusta al ancho del texto */
+    max-width: 800px; /* Evita que se estire demasiado en pantallas anchas */
+    
+    /* Efecto 3D (Sombra y Relieve) */
+    box-shadow: 
+        0 4px 0 #5b21b6, /* Borde inferior oscuro (relieve 3D) */
+        0 6px 15px rgba(124, 58, 237, 0.5); /* Resplandor neón inferior */
+        
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Brillo sutil en el borde superior */
+    transition: 0.3s ease;
+}
+
+/* Efecto Hover Opcional */
+.transition-button:hover {
+    background: linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%); /* Se aclara un poco */
+    transform: translateY(-2px); /* Se eleva */
+    box-shadow: 
+        0 6px 0 #6d28d9, /* Relieve más pronunciado */
+        0 8px 20px rgba(124, 58, 237, 0.6); /* Brillo neón más intenso */
+}
+
+
+/* ==========================================================
+   SECCIÓN TARJETA DE CURRÍCULUM (ESTILO NEÓN MAQUETA) - CORREGIDO
+   ========================================================== */
+
+/* CONTENEDOR DE TARJETAS (LAYOUT) */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 5%;
+    flex-wrap: wrap;
+    /* 3. IGUALAR TAMAÑO: Alineación stretch para que midan lo mismo */
+    align-items: stretch; 
+}
+
+/* ESTILO BASE DE VIDRIO (Glassmorphism) */
+.glass-card {
+    /* 1. FONDO CORREGIDO: Negro sutil para contraste, sin gris */
+    background: rgba(0, 0, 0, 0.01) !important; 
+    backdrop-filter: blur(2px) !important; /* Desenfoque más intenso */
+    -webkit-backdrop-filter: blur(2px) !important;
+    border-radius: 60px;
+    padding: 40px;
+    width: 480px;
+    /* Quitamos min-height para que stretch funcione */
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Un borde casi invisible ayuda a definir la tarjeta */ 
+    transition: transform 0.3s ease;
+    overflow: visible;
+    z-index: 1;
+}
+
+/* PSEUDO-ELEMENTO PARA EL FONDO DE COLOR (DETRÁS DEL VIDRIO) */
+/* 1. FONDOS DE COLOR CON TRANSPARENCIA */
+.glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    z-index: -2; /* Queda detrás del fondo negro */
+    opacity: 0.8; /* Transparencia del fondo de color */
+}
+
+/* Fondo Morado para Director */
+.director-card::after {
+    background: rgba(95, 29, 156, 0.8) !important; /* 15% de opacidad */
+}
+
+/* Fondo Verde para Actor */
+.actor-card::after {
+    background: rgba(15, 146, 65, 0.8) !important; /* 15% de opacidad */
+}
+
+/* TRUCO PARA EL BORDE DEGRADADO REDONDEADO CON NEÓN */
+/* Creamos un pseudo-elemento que simula el borde */
+.glass-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px; /* Ocupa todo el espacio de la tarjeta */
+    border-radius: 20px; /* Mismo radio que la tarjeta */
+    padding: 5px; /* Grosor del borde */
+    background: var(--purple-neon); /* O var(--green-neon) según la tarjeta */
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude; /* Esto hace que solo se vea el borde */
+    z-index: -1; /* Queda detrás del contenido */
+}
+/* --- ESTILOS DE TIPOGRAFÍA Y LISTAS --- */
+.card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-content li {
+    font-family: 'Poppins', sans-serif; /* Recuperamos Poppins */
+    color: #ffffff;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* RESALTADO DE TEXTO ENTRE PARÉNTESIS */
+.card-content em {
+    font-style: normal;
+    color: #00f2ff; /* Cian Neón para resaltar los paréntesis */
+    font-weight: 500;
+}
+
+/* COLORES ESPECÍFICOS DE TARJETA (BORDE Y RESPLANDOR SUPERIOR) */
+
+/* Tarjeta de Director (Púrpura) */
+.director-card {
+    /* Resplandor superior sutil */
+    box-shadow: 0 -15px 40px rgba(168, 85, 247, 0.15); 
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), /* Brillo suave */
+                inset 0 0 10px rgba(168, 85, 247, 0.2); /* Brillo interno */
+}
+
+.director-card::before {
+    background: linear-gradient(135deg, var(--purple-neon), #3b0764);
+    filter: drop-shadow(0 0 8px var(--purple-neon)); /* Esto crea el efecto neón real */
+}
+
+/* Tarjeta de Actor (Verde) */
+.actor-card {
+    /* Resplandor superior sutil */
+    box-shadow: 0 -15px 40px rgba(34, 197, 94, 0.15);
+}
+
+.actor-card::before {
+    background: linear-gradient(135deg, var(--green-neon), #052e16);
+    background: var(--green-neon) !important;
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.8));
+
+}
+
+/* EFECTO HOVER (Pulso Neón) */
+.glass-card:hover {
+    transform: translateY(-5px);
+}
+.director-card:hover {
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.4);
+}
+.actor-card:hover {
+    box-shadow: 0 0 50px rgba(34, 197, 94, 0.4);
+}
+
+/* ==========================================================
+   ENCABEZADO DE TARJETA (TÍTULOS Y ICONOS)
+   ========================================================== */
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Icono a un lado, texto al otro */
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05); /* Línea divisoria sutil */
+    padding-bottom: 15px;
+}
+
+/* Estilo del Nombre y Rol */
+.card-header h3 {
+    font-family: 'Antonio', sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0;
+}
+
+.card-header span {
+    font-size: 3rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Títulos H3 con Color Neón acorde a la Tarjeta */
+/*
+.director-card .card-header h3 span {
+    color: var(--purple-neon);
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+} 
+
+.actor-card .card-header h3 span {
+    color: var(--green-neon);
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+} */
+
+/* ICONOS CON CÍRCULO RESPLANDECIENTE */
+/* 1. EL CONTENEDOR DEL CÍRCULO NEÓN (Detrás) - Mantener igual */
+.icon-neon-circle {
+    width: 80px;  /* Tamaño base del círculo */
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid transparent;
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Colores específicos del círculo según la tarjeta - Mantener igual */
+.director-card .icon-neon-circle {
+    border-color: var(--purple-neon);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+.actor-card .icon-neon-circle {
+    border-color: var(--green-neon);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+}
+
+/* 2. LOS ÍCONOS QUE SE DESBORDAN (Delante) - NUEVO SELECTOR */
+/* Este selector aplica a la imagen (img) dentro del círculo neón,
+   tanto la claqueta como el micrófono. */
+.icon-neon-circle img.card-icon {
+    /* --- MANIPULA ESTOS VALORES PARA EL TAMAÑO DE AMBOS --- */
+    width: 100px;  /* Aumenta para que sean más grandes */
+    height: 100px; /* Mantén el mismo valor */
+    
+    object-fit: contain; /* Asegura que no se deformen */
+    
+    /* Posicionamiento absoluto para desbordar y centrar */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado perfecto */
+    
+    /* Resplandor sutil para que el dibujo resalte */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    
+    /* Limpieza de estilos antiguos */
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    z-index: 2; /* Asegura que esté por encima del círculo */
+}
+
+/* ==========================================================
+   CONTENIDO DE LISTAS (POPPINS Y CIAN)
+   ========================================================= */
+.card-content h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    margin: 30px 0 12px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* 1. IGUALAR TAMAÑO Y FONDO DE TARJETAS */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 5%;
+    align-items: stretch; /* Esto hace que ambas midan lo mismo */
+}
+
+.glass-card {
+    border-radius: 20px;
+    padding: 40px;
+    width: 480px;
+    position: relative;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Colores de fondo translúcidos según la tarjeta */
+.director-card {
+    background: rgba(168, 85, 247, 0.15); /* Morado muy transparente */
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+}
+
+.actor-card {
+    background: rgba(34, 197, 94, 0.15); /* Verde muy transparente */
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+}
+.card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* OPCIONAL: Puedes añadir un min-height aquí para que 
+       todas las listas previas ocupen el mismo espacio vertical */
+    min-height: 120px; 
+}
+
+/* 2. LA PLECA DE ANIMACIÓN (ESTILO BASE) */
+.animacion-highlight {
+    background: rgba(255, 255, 255, 0.1); /* Pleca con menos transparencia */
+    margin: 20px -20px 0; /* Se extiende un poco hacia los lados */
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--purple-neon); /* Detalle neón lateral predeterminado (morado) */
+}
+
+/* Color de pleca para Director (Púrpura Neón) */
+.director-card .animacion-highlight {
+    border-left: 4px
+}
+
+/* Color de pleca para Actor (Verde Neón) */
+.actor-card .animacion-highlight {
+    border-left: 4px
+}
+
+.animacion-highlight h4 {
+    margin-top: 0 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Títulos H4 de Animación con Color Neón acorde a la Tarjeta */
+/*.director-card .animacion-highlight h4 {
+    color: var(--purple-neon) !important;
+}
+
+/*.actor-card .animacion-highlight h4 {
+    color: var(--green-neon) !important;
+}
+/* 2. LA PLECA DE ANIMACIÓN */
+.animacion-highlight {
+    background: rgba(255, 255, 255, 0.1); /* Pleca con menos transparencia */
+    margin: 20px -20px 0; /* Se extiende un poco hacia los lados */
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--purple-neon); /* Detalle neón lateral */
+}
+/*
+.animacion-highlight h4 {
+    margin-top: 0 !important;
+   color: var(--purple-neon) !important;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+} */
+
+/* 3. TÍTULOS Y LISTAS */
+.card-content h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    margin: 25px 0 10px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* Quité la pleca (border-bottom) de los h4 normales como pediste */
+.card-content h4 {
+    border-bottom: none; 
+}
+
+/* Iconos de cabecera más grandes */
+.card-icon {
+    width: 90px; /* Tamaño aumentado */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+}
+
+/* Download Section */
+/* ==========================================================
+  /* ==========================================================
+   SECCIÓN DE DESCARGA (RÉPLICA EXACTA MAQUETA)
+   ========================================================== */
+
+.download-section {
+    text-align: center;
+    margin: 60px 0; /* Espacio vertical */
+    padding: 0 10px;
+}
+
+.download-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Espacio entre el botón y el logo derecho */
+    max-width: 1000px; /* Ancho máximo contenedor */
+    margin: 0 auto;
+}
+
+/* --- ESTILO DEL BOTÓN COMPLETO (Clicable) --- */
+.download-btn-replica {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Sin subrayado */
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* --- 1. CONTENEDOR METÁLICO 3D (Círculo Estilo Inicio) --- */
+.metal-icon-holder {
+    width: 110px; /* Tamaño del círculo */
+    height: 110px;
+    border-radius: 50%; /* Círculo perfecto */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Por encima del botón rojo */
+    
+    /* Fondo: Degradado metálico sutil */
+    background: linear-gradient(135deg, #cecece 0%, #a6a6a6 50%, #808080 100%);
+    
+    /* Marco (Bisel Exterior) - Imita la luz */
+    border-top: 5px solid #eaeaea;   /* Luz superior */
+    border-left: 5px solid #d1d1d1;
+    border-right: 5px solid #999999;
+    border-bottom: 5px solid #666666; /* Sombra inferior */
+    
+    box-sizing: border-box;
+    
+    /* Sombras: Efecto cóncavo y relieve */
+    box-shadow: 
+        /* Relieve exterior sobre el panal */
+        5px 8px 15px rgba(0, 0, 0, 0.7),
+        
+        /* Efecto Cóncavo Interno */
+        inset 0 10px 15px rgba(0, 0, 0, 0.4), /* Sombra superior interna */
+        inset 0 -6px 10px rgba(255, 255, 255, 0.3), /* Luz inferior interna */
+        inset 0 0 20px rgba(0, 0, 0, 0.5); /* Oscuridad central */
+}
+
+/* --- EFECTO POP-OUT (La imagen se desborda) --- */
+.cartoon-pop-out {
+    width: 135%; /* Más grande que el círculo */
+    height: auto;
+    position: absolute;
+    bottom: -12px; /* Se desborda hacia abajo */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado horizontal */
+    z-index: 15; /* Por encima del metal */
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); /* Sombra para profundidad */
+    transition: transform 0.3s ease;
+}
+
+/* --- 2. CUERPO DEL BOTÓN ROJO (Réplica Maqueta) --- */
+.red-btn-body {
+    margin-left: -40px; /* Superposición con el círculo */
+    padding: 12px 25px 12px 60px; /* Espacio para el texto, padding izquierdo mayor */
+    background: linear-gradient(180deg, #ff4d4d 0%, #f72b2b 100%); /* Degradado Rojo */
+    
+    /* Texto */
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif; /* Usamos Poppins */
+    font-weight: 700; /* Negrita gruesa */
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-transform: uppercase; /* Mayúsculas */
+    text-align: center;
+    
+    /* Forma y Relieve */
+    border-radius: 10px; /* Redondeado sutil */
+    border-bottom: 4px solid #b31d1d; /* Relieve inferior oscuro */
+    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra proyectada */
+    z-index: 5; /* Por debajo del círculo */
+}
+
+/* --- 3. LOGO JAVIER RIVERO EL JAVO (Derecha) --- */
+.javo-logo-right img {
+    width: 200px; /* Tamaño del logo */
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); /* Resplandor sutil */
+}
+
+/* --- ANIMACIONES HOVER (Elevación + Brillo Blanco) --- */
+.download-btn-replica:hover {
+    transform: translateY(-5px); /* Se eleva un poco más para lucir el brillo */
+}
+
+.download-btn-replica:hover .red-btn-body {
+    /* Mantenemos el relieve 3D pero añadimos el resplandor blanco exterior */
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8), /* Resplandor Blanco exterior */
+        0 0 40px rgba(255, 255, 255, 0.4), /* Halo de luz más amplio */
+        0 6px 0 #b31d1d;                 /* Mantiene el relieve inferior */
+    
+    background: linear-gradient(180deg, #ff6666 0%, #f72b2b 100%); /* Aclara un poco el rojo al pasar el mouse */
+}
+
+.download-btn-replica:hover .metal-icon-holder {
+    /* El círculo metálico también recibe un toque de luz */
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.6),
+        5px 8px 15px rgba(0, 0, 0, 0.7),
+        inset 0 10px 15px rgba(0, 0, 0, 0.4);
+    
+    border-top-color: #ffffff; /* La luz superior se vuelve blanca pura */
+}
+
+/* --- OPCIONAL: Brillo en el Personaje --- */
+.download-btn-replica:hover .cartoon-pop-out {
+    transform: translateX(-50%) scale(1.1) translateY(-5px);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); /* El personaje también brilla */
+}
+
+
+/* Bio SEO */
+.bio-seo {
+    background: var(--glass-bg);
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.bio-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.bio-text { flex: 2; }
+.bio-text p { margin-bottom: 15px; color: #ddd; }
+.bio-image { flex: 1; }
+.bio-image img {
+    width: 100%;
+    border-radius: 15px;
+    filter: grayscale(30%) contrast(1.1);
+}
+
+/* --- Footer --- */
+.section-row { display: flex; justify-content: center; gap: 135px; margin-top: 40px; margin-bottom: 30px; }
+
+/* --- Navegación Secundaria --- */
+.secondary-nav {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 15px 0;
+    border-top: 1px solid #333;
+    text-align: center;
+}
+
+.secondary-nav .nav-links a {
+    color: #888;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.secondary-nav .nav-links a:hover {
+    color: #fff;
+}
+/* ==========================================================
+   SECCIÓN BIO (ESTILO GLASS-CARD NEÓN)
+   ========================================================== */
+
+.bio-section {
+    padding: 100px 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.bio-container {
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+}
+
+/* La tarjeta principal con efecto vidrio */
+.bio-glass-card {
+    background: rgba(0, 0, 0, 0.4) !important; /* Fondo oscuro transparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 2px solid #8147ff; /* Borde Neón Base */
+    box-shadow: 0 0 20px rgba(129, 71, 255, 0.3); /* Resplandor neón suave */
+    position: relative;
+    z-index: 2;
+}
+
+.bio-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.bio-text {
+    flex: 1;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    text-align: justify;
+    font-size: 1.05rem;
+}
+
+.bio-text strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* Imagen de perfil con marco */
+.bio-image img {
+    width: 500px;
+    height: auto;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5);
+}
+
+/* ELEMENTOS DECORATIVOS (POP-OUT) */
+.bio-deco {
+    position: absolute;
+    z-index: 3; /* Por encima de la tarjeta */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+    pointer-events: none; /* No estorban al click */
+}
+
+.megaphone {
+    width: 220px;
+    left: -170px;
+    bottom: -100px;
+    transform: rotate(-15deg);
+}
+
+.film-roll {
+    width: 190px;
+    right: -40px;
+    bottom: -130px;
+}
+
+
+
+/* --- Footer Principal (Datos y Redes) --- */
+.main-footer {
+    background: #111;
+    padding: 40px 0;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #222;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Iconos de Redes Sociales Biselados */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    /* Efecto Biselado similar a tus botones */
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #000;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: #444;
+    color: #ffaa00; /* Color de realce (Naranja como tu botón de Brief) */
+}
+
+.footer-info {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+/* Animaciones */
+@keyframes rotate-border {
+    to { filter: hue-rotate(360deg); }
+}
+/* Responsive */
+@media (max-width: 768px) {
+    .download-wrapper { flex-direction: column; gap: 20px; }
+    .red-btn-body { margin-left: 0; padding-left: 25px; margin-top: -30px; }
+}
+/* RESPONSIVE */
+@media (max-width: 850px) {
+    .bio-content { flex-direction: column-reverse; }
+    .bio-image img { width: 100%; max-width: 300px; }
+    .megaphone, .film-roll { display: none; } /* Ocultar en móvil para no tapar texto */
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Esta clase se activa al pasar el mouse (PC) */
+.white-glow-pulse {
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.8);
+    background: rgba(0, 242, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* Esta clase es el "Flash" blanco al hacer clic */
+.btn-active-glow {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: 0 0 30px #fff, 0 0 60px #00f2ff !important;
+    transition: none !important; /* El flash debe ser instantáneo */
+}
+
+/* Mobile */
+/* --- AJUSTES MÓVIL CURRÍCULA --- */
+@media (max-width: 768px) {
+    /* 1. Evitar que nada se salga de los bordes */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 1. Header: Logo a la izquierda, Botón a la derecha */
+    header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center;
+        padding: 10px 15px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    header img {
+        width: 100px !important; /* Ajusta aquí el tamaño del logo */
+        height: auto !important;
+    }
+
+    .btn-back {
+        position: static !important;
+        font-size: 0.7rem !important;
+        padding: 8px 12px !important; /* Agrega algo de padding interno para darle más cuerpo */
+        margin: 0 !important;
+    }
+
+    /* 2. Sección Hero (El contenedor de Javo y el Título) */
+    .hero-trayectoria {
+        display: flex;
+        flex-direction: column; /* Foto arriba, texto abajo */
+        align-items: center;
+        text-align: center;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    /* 3. La Foto de Javier */
+    .profile-frame {
+        display: block !important;
+        width: 160px !important; /* Tamaño de la foto en móvil */
+        height: 160px !important;
+        margin: 0 auto;
+    }
+
+    .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+    /* 1. Header: Logo a la izquierda, Botón a la derecha */
+    /* Targeteamos el contenedor real: .download-wrapper */
+    .download-section .download-wrapper {
+        display: flex; /* Flexbox activado */
+        flex-direction: row; /* Elementos en fila */
+        justify-content: space-between; /* Espacio entre logo y botón */
+        align-items: center; /* Alineación vertical central */
+        padding: 10px 15px; /* Padding reducido para móvil */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .metal-icon-holder {
+    position: relative; /* Asegura el correcto posicionamiento si se superpone */
+    /* --- AJUSTA ESTE VALOR PARA SUBIR EL ÍCONO --- */
+    margin-top: -35px !important; /* Un valor negativo mayor (ej. -30px, -40px) jala más arriba */
+    z-index: 2; /* Asegura que el ícono esté por encima del botón si se superpone */
+}
+    /* Ajuste específico para el logo dentro de .javo-logo-right */
+    .javo-logo-right img {
+        width: 115px; /* Tamaño del logo en móvil */
+        height: auto;
+    }
+
+    /* Asegúrate de que .download-btn-replica no tenga márgenes que rompan la alineación */
+    .download-btn-replica {
+        margin: 0;
+        /* Puedes agregar estilos específicos para el botón replica aquí si lo deseas */
+    }
+
+    /* 4. El Título y Subtítulo */
+    .hero-text-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;    /* Centra horizontalmente */
+        text-align: center;     /* Asegura que el texto no se cargue a la izquierda */
+        padding: 0 10px;        /* Espacio para que el texto no toque los bordes del cel */
+        box-sizing: border-box;
+    }
+
+    h1 {
+        font-size: 8vw !important; /* Escala con el ancho del celular */
+        line-height: 1.1;
+        white-space: normal !important;
+        margin: 0 auto 10px auto;
+        display: block;
+    }
+
+    .subtitle {
+        font-size: 0.9rem !important;
+        letter-spacing: 2px;
+        display: block;
+    }
+
+
+    /* 5. TARJETAS MORADAS */
+    .trayectoria-box {
+        width: 90% !important;
+        max-width: 100%;
+        margin: 10px auto !important;
+        box-sizing: border-box;
+    }
+
+    
+}

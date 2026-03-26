@@ -1,0 +1,943 @@
+/* ================================================================
+   ESTILOS ESPECÍFICOS: SUBPÁGINA SERVICIOS - JAVIER RIVERO
+   ================================================================ */
+/* --- FUENTES GLOBALES --- */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* --- RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body::before {
+    content: ""; /* Obligatorio para pseudo-elementos */
+    position: fixed; /* Mantiene el fondo fijo al hacer scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* --- CONFIGURACIÓN DE LA IMAGEN --- */
+    background-image: url('../../assets/header/fondo-panal.png');
+    background-repeat: repeat; /* El patrón se repite */
+    background-position: center;
+    
+    /* --- AJUSTES QUE PEDISTE --- */
+    background-size: 500px; /* 1. Tamaño más pequeño (ajusta a tu gusto) */
+    opacity: 0.40;          /* 2. Transparencia de la imagen (15% visible) */
+    
+    /* --- CAPAS (Z-INDEX) --- */
+    z-index: -1; /* Importante: Coloca esta capa DETRÁS del contenido del body */
+    
+    /* Opcional: Suaviza un poco más la imagen */
+    filter: blur(0.5px); 
+}
+
+/* ============================================================
+   NAVEGACIÓN (TEMA CIAN)
+   ============================================================ */
+/* --- 1. BARRA DE NAVEGACIÓN FIJA --- */
+.mini-logo {
+    height: 60px; /* Tamaño del logo un 30% más pequeño como pediste */
+    width: auto;
+}
+.navbar-fixed {
+    position: absolute; top: 0; left: 0; width: 100%; height: 80px;
+    background: #000; display: flex; justify-content: center;
+    align-items: center; z-index: 1000; border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+}
+
+.back-btn {
+    padding: 10px 25px; background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(129, 71, 255, 0.5); color: #fff;
+    border-radius: 5px; text-decoration: none; font-weight: 700;
+}
+/* HOVER: El neón se enciende */
+.back-btn.glass-btn-purple:hover {
+    background: #8147ff;
+    box-shadow: 0 0 15px #8147ff, 0 0 30px rgba(129, 71, 255, 0.6);
+    text-shadow: 0 0 5px #fff;
+    transform: translateY(-3px); /* Sube un poco */
+}
+
+/* ACTIVE: Se hunde y brilla más fuerte */
+.back-btn.glass-btn-purple:active {
+    transform: translateY(2px) scale(0.95); /* Se hunde */
+    box-shadow: 0 0 10px #8147ff, inset 0 0 10px rgba(0,0,0,0.5);
+    filter: brightness(1.4);
+    transition: all 0.1s;
+}
+/* Contenedor interno para alinear elementos */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Volver a la izq, Hamburguesa a la der */
+    align-items: center;
+    position: relative;
+}
+
+/* --- MENÚ HAMBURGUESA --- */
+.menu-hamburguesa {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Por encima del menú */
+}
+
+.menu-hamburguesa span {
+    width: 100%;
+    height: 4px;
+    background: #8147ff; /* Morado neón */
+    box-shadow: 0 0 10px rgba(129, 71, 255, 0.8);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- LISTA DESPLEGABLE --- */
+.nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(10, 10, 10, 0.98); /* Un poco más oscuro */
+    backdrop-filter: blur(15px);
+    border-left: 2px solid #8147ff;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9998; /* Justo debajo de la barra pero arriba del contenido */
+}
+
+.nav-menu.active {
+    right: 0; /* Se desliza hacia adentro */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* Animación de la hamburguesa (X) */
+.menu-hamburguesa.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+
+p, .tagline{
+    font-family: 'Antonio', sans-serif;
+    font-weight: 500;                   /* Grosor intermedio/fuerte */
+    font-size: 1.5rem;                  /* Tamaño grande para PC */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff !important;;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+:root {
+    --accent-purple: #8147ff;
+    --cyber-blue: #00a2ff;
+    --gold-fan: #ffaa00;
+    --whatsapp-green: #25d366;
+    --action-orange: #00a2ff;
+    --dark-card: rgba(255, 255, 255, 0.03);
+}
+
+
+/* --- SECCIÓN CURSOS --- */
+/* --- CONTENEDOR PRINCIPAL --- */
+.cursos-section {
+    /* Aumentamos el padding superior para separarlo de la barra de navegación */
+    padding: 110px 0 60px 0; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Aseguramos que si hay elementos flotantes no se encimen */
+    position: relative; 
+    clear: both;
+}
+
+/* --- HEADER: LOGO - TÍTULO NEÓN - ILUSTRACIÓN --- */
+.cursos-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.header-logo-left img { height: 100px; }
+.header-illu-right img { height: 120px; }
+
+.neon-title-box {
+    border: 3px solid #00d4ff;
+    padding: 15px 60px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.neon-title-box h2 {
+    font-family: 'Antonio', sans-serif;
+    font-size: 2.2rem;
+    color: #fff;
+    margin: 0;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+/* --- CARUSEL WRAPPER --- */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 80px 80px;
+}
+
+.carousel-window {
+    overflow: visible;
+    width: 100%;
+    
+}
+
+.carousel-track {
+    display: flex;
+    gap: 75px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* --- TARJETA NEÓN --- */
+.curso-card-neon {
+    flex: 0 0 calc(20% - 15px); /* Desktop: 4 tarjetas */
+    min-width: 250px; /* Evita que se deformen mucho */
+    background: #0a0a0a;
+    border: 2px solid #00d4ff;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.curso-video-box {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.curso-video-box video { width: 100%; height: 100%; object-fit: cover; }
+
+.curso-footer { padding: 15px 5px; text-align: center; }
+.curso-footer h3 {
+    /* 1. Ajuste de caja para que el marco no sea infinito */
+    display: inline-block; 
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    
+    /* 2. El Marco (Borde) */
+    border: 1px solid rgba(0, 212, 255, 0.8);
+    border-radius: 8px;
+    
+    /* 3. El Brillo (Neón) */
+    /* Sombra externa (el aura) y sombra interna (opcional para más brillo) */
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4), 
+                inset 0 0 5px rgba(0, 212, 255, 0.2);
+    
+    /* 4. Estética del texto */
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.6);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.curso-footer h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 15px;
+    height: 35px;
+    text-transform: uppercase;
+}
+
+.curso-footer h3.titulo-reducido {
+    font-size: 0.81rem; /* Ajusta este valor a tu gusto */
+    padding: 8px 10px; /* Reducimos un poco el padding para que el marco no se vea gigante */
+}
+
+/* --- BOTONES Y CONTROLES --- */
+.curso-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.play-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-whatsapp-informes {
+    background: #25d366;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+}
+
+/* EFECTO HOVER SIN "CAJA" */
+.curso-card-neon:hover {
+    transform: scale(1.05);
+    border-color: #fff;
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+    z-index: 10;
+}
+
+/* --- FLECHAS --- */
+.carousel-arrow {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 5;
+    transition: 0.3s;
+}
+.carousel-arrow:disabled { opacity: 0; cursor: default; }
+
+/* ================================================================
+   NUEVO HERO SECTION ESTILO BANNER (IGUAL A LA IMAGEN)
+   ================================================================ */
+
+.services-hero {
+    /* Mantenemos el padding superior para la navbar, pero ajustamos el diseño */
+    padding: 80px 0 60px; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* El fondo ya lo hereda del body (panal), aquí lo dejamos transparente */
+    background: transparent; 
+}
+
+/* Contenedor principal que alinea los 3 elementos en línea */
+.hero-inner-container {
+    width: 90%;
+    max-width: 1400px; /* Ajusta según el ancho de tus imágenes */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- ESTILOS DE LOS GRÁFICOS LATERALES (FOTO Y MICRO) --- */
+.hero-side-graphic {
+    flex: 0 0 auto; /* No crecen ni se encogen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajuste de tamaño para que queden equilibrados como en la foto */
+.hero-avatar-img {
+    height: 250px; /* Ajusta según tus recursos */
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 0.3)); /* Brillo rosa sutil */
+}
+
+.hero-micro-img {
+    height: 250px; /* Igual altura que la foto */
+    width: auto;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.3)); /* Brillo cian sutil */
+}
+
+/* --- ESTILOS DEL CONTENIDO CENTRAL (TEXTO Y ONDAS) --- */
+.hero-content-center {
+    flex: 1; /* Ocupa el espacio restante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+/* Este contenedor tiene la imagen de ondas de audio como fondo */
+.text-with-wave-bg {
+    position: relative; /* Necesario para posicionar las ondas detrás */
+    padding: 20px 10px;
+    width: 200%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 10% auto; /* Asegura que la onda se vea detrás del texto */
+    
+    /* Pequeño glow global al centro */
+    /*
+    box-shadow: 0 0 50px rgba(0, 162, 255, 0.15); */
+}
+
+.text-with-wave-bg::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: 3%;
+    width: 100%;
+    height: 100%;
+    
+    /* --- CONFIGURACIÓN DE LA IMAGEN --- */
+    background-image: url('../../assets/images/ondas-audio-cyan.png'); 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 110% auto; /* Aquí controlas el tamaño que querías */
+    
+    /* --- EL GIRO VERTICAL --- */
+    transform: scaleY(-1); 
+    
+    /* --- CAPA --- */
+    z-index: -1; /* Se queda detrás del texto */
+    pointer-events: none; /* No interfiere con clicks */
+}
+
+/* --- AJUSTE DE TIPOGRAFÍA (ESTILO EXACTO A LA IMAGEN) --- */
+
+.services-title-main {
+    font-family: 'Antonio', sans-serif; /* Usamos Antonio para ese look condensed y fuerte */
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    
+    /* Efecto Neón Cian/Blanco */
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px rgba(0, 162, 255, 0.8),
+                 0 0 30px rgba(0, 162, 255, 0.5);
+    
+    /* Animación sutil de parpadeo neón */
+    animation: neonFlickerCian 3s infinite alternate;
+}
+
+.hero-content-center .tagline-white {
+    font-family: 'Antonio', sans-serif; /* Poppins para el subtítulo limpio */
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #eee;
+    margin: 0 auto;
+    max-width: 650px; /* Limita el ancho del texto para legibilidad */
+    line-height: 1.5;
+    text-transform: none; /* No va en mayúsculas según la foto */
+    letter-spacing: 0.5px;
+}
+
+/* --- KEYFRAMES PARA LA ANIMACIÓN NEÓN --- */
+@keyframes neonFlickerCian {
+    0%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px rgba(0, 162, 255, 0.8), 0 0 30px rgba(0, 162, 255, 0.5); }
+    50% { text-shadow: 0 0 8px #fff, 0 0 15px rgba(0, 162, 255, 0.6), 0 0 25px rgba(0, 162, 255, 0.3); opacity: 0.95; }
+    52% { text-shadow: 0 0 12px #fff, 0 0 25px rgba(0, 162, 255, 0.9), 0 0 35px rgba(0, 162, 255, 0.6); opacity: 1; }
+}
+
+
+
+/* --- CONTENEDOR DE BLOQUES --- */
+.services-grid {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    margin-top: 10px;
+}
+
+.service-block {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 90px;
+    padding: 40px;
+    background: rgba(0, 35, 49, 0.438); 
+    backdrop-filter: blur(5px); /* EFECTO CRISTAL: Esto hace que el panal se vea borroso detrás */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+.service-block:hover {
+    border-color: rgba(129, 71, 255, 0.4);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Alternancia de bloques (Z-Pattern) */
+.service-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* --- INFORMACIÓN DEL SERVICIO --- */
+.service-info {
+    flex: 1;
+}
+
+.service-info h2 {
+    font-family: 'Antonio', sans-serif;
+    font-size: 2.5rem;
+    color: var(--cyber-blue);
+    margin-bottom: 20px;
+}
+
+.service-info p {
+    color: #ccc;
+    font-family: 'Popins', sans-serif;
+    font-size: 1.1rem;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.benefit-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 35px;
+}
+
+.benefit-list li {
+    margin-bottom: 12px;
+    color: #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.benefit-list i {
+    color: var(--accent-purple);
+}
+
+/* ================================================================
+   ADAPTACIÓN DE COLORES POR CATEGORÍA 
+   (Usando las clases que ya pusiste en tus <article>)
+   ================================================================ */
+
+/* 1. CATEGORÍA LOCUCIÓN (Naranja) */
+.service-info h2 { color: #00b7ff !important; }
+.service-info .benefit-list i { color: #00b7ff; }
+
+/* 2. CATEGORÍA DOBLAJE (Verde) */
+.category-doblaje h2 { color: #25d366 !important; }
+.category-doblaje .benefit-list i { color: #25d366; }
+
+/* 3. CATEGORÍA SALUDOS (Amarillo/Oro) */
+.highlight-gold h2 { color: #ffaa00 !important; }
+.highlight-gold .benefit-list i { color: #ffaa00; }
+/* Ajuste para que el botón de saludos coincida con el amarillo en lugar de púrpura */
+.highlight-gold .glass-btn-purple-glow {
+    border-color: #ffaa00;
+    background: rgba(255, 170, 0, 0.15);
+}
+.highlight-gold .glass-btn-purple-glow:hover {
+    background: #ffaa00;
+    color: #000;
+    box-shadow: 0 0 25px rgba(255, 170, 0, 0.5);
+}
+/* --- MEDIA SLOT (CONTENEDOR DE VIDEO/AUDIO) --- */
+.media-slot {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #222;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.media-slot video, 
+.media-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay para secciones de solo Audio */
+.audio-player-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    backdrop-filter: blur(5px);
+}
+
+audio {
+    width: 100%;
+    filter: invert(100%) hue-rotate(180deg) brightness(1.5);
+}
+
+/* --- ESTILOS DE BOTONES DIFERENCIADOS --- */
+.service-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Botón Locución (Naranja - Energía/Venta) */
+.glass-btn-orange {
+    background: rgba(5, 176, 255, 0.15);
+    border: 1px solid var(--action-blue);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.glass-btn-orange:hover {
+    background: #00a2ff;                 /* Fondo azul sólido al pasar el mouse */
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.6); /* AQUÍ MANIPULAS EL BRILLO AZUL */
+    transform: translateY(-3px);
+}
+
+/* Botón Doblaje (Verde - Confianza/WhatsApp) */
+.glass-btn-green {
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid var(--whatsapp-green);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.glass-btn-green:hover {
+    background: var(--whatsapp-green);
+    color: #000;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+    transform: translateY(-3px);
+}
+
+/* Botón Saludos (Púrpura/Oro - Exclusividad) */
+.glass-btn-purple-glow {
+    background: rgba(129, 71, 255, 0.15);
+    border: 1px solid var(--accent-purple);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.glass-btn-purple-glow:hover {
+    background: var(--accent-purple);
+    box-shadow: 0 0 25px rgba(129, 71, 255, 0.7);
+    transform: translateY(-3px);
+}
+
+/* Variación dorada para el bloque de saludos */
+.highlight-gold {
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.gold-text {
+    color: var(--gold-fan) !important;
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+}
+
+.highlight-gold .benefit-list i {
+    color: var(--gold-fan);
+}
+
+/* --- AJUSTE PARA ENFOQUE ÚNICO --- */
+/* --- CONFIGURACIÓN BASE DEL CARRUSEL --- */
+/* --- CONFIGURACIÓN DEL CONTENEDOR --- */
+.carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px; 
+    margin: 40px auto;
+    max-width: 1250px; /* Aumentado para albergar 3 tarjetas de ~400px */
+}
+
+.carousel-window {
+    width: 100%;
+    overflow: hidden; 
+    /* EL TRUCO PARA EL NEÓN: 
+       Añadimos padding para que el brillo y el scale(1.02) 
+       tengan espacio antes de chocar con el overflow:hidden */
+    padding: 40px 15px; 
+    margin: -40px 0; /* Compensamos el padding para no mover otros elementos */
+}
+
+.carousel-track {
+    display: flex;
+    gap: 25px; /* Espacio entre tarjetas */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- TARJETAS: 3 por vista en escritorio --- */
+.curso-card-neon {
+    /* Cálculo: (100% / 3 tarjetas) - el proporcional del gap */
+    flex: 0 0 calc(33.333% - 17px); 
+    min-width: calc(33.333% - 17px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px; /* Asegúrate de que tenga borde redondeado */
+}
+
+.curso-card-neon:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+    z-index: 10;
+}
+
+/* --- FLECHAS --- */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(129, 71, 255, 0.15);
+    border: 2px solid #8147ff;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.carousel-arrow:hover {
+    background: #8147ff;
+    box-shadow: 0 0 15px #8147ff;
+}
+
+.prev { left: 5px; }
+.next { right: 5px; }
+/* --- RESPONSIVO GENERAL (TABLET & MÓVIL) --- */
+@media (max-width: 992px) {
+    .service-block, 
+    .service-block:nth-child(even) {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .service-actions, .benefit-list li {
+        justify-content: center;
+    }
+
+    /* Hero Section Adjustments */
+    .hero-inner-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-avatar-img, .hero-micro-img {
+        height: 150px; /* Reducido un poco más para evitar scroll infinito */
+    }
+    
+    .left-graphic { order: 1; }
+    .hero-content-center { order: 2; margin: 20px 0; }
+    .right-graphic { order: 3; }
+}
+
+/* --- RESPONSIVE ESPECÍFICO: CARRUSEL Y CURSOS (MÓVIL) --- */
+/* --- RESPONSIVE ESPECÍFICO (MÓVIL) --- */
+@media (max-width: 768px) {
+    /* 1. Ajustes de Header */
+    .cursos-header-container { 
+    display: flex;             /* Asegura que sea flex */
+    flex-direction: column;    /* Apila los elementos: logo -> título -> ilustración */
+    align-items: center;       /* Centra todo horizontalmente */
+    gap: 15px;                 /* Un poco más de aire entre elementos */
+    margin-bottom: 25px; 
+}
+
+.header-logo-left img, 
+.header-illu-right img { 
+    height: 50px;              /* Unificamos un poco el tamaño */
+    width: auto; 
+}
+
+.neon-title-box h2 { 
+    font-size: 1.1rem;         /* Un pelín más grande para que destaque al estar solo */
+    text-align: center;
+}
+
+.service-info p {
+    font-size: 0.8rem;
+    margin-bottom: 15px;    
+}
+
+.benefit-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Empuja los <li> a la derecha */
+        padding: 0;
+        margin-bottom: 20px;
+        list-style: none;
+    }
+.curso-footer h3.titulo-reducido {
+    font-size: 0.6rem;
+    line-height: 1.1;
+}
+
+
+    /* 2. VENTANA: Definimos un ancho fijo para el "slot" de visión */
+    .carousel-window { 
+        /* Si la tarjeta mide 270px y queremos 20px de brillo a cada lado: 270+20+20 = 310px */
+        width: 310px; 
+        max-width: 310px; 
+        margin: 0 auto;
+        overflow: hidden; /* Corta la siguiente tarjeta pero deja ver el neón interno */
+        padding: 40px 0; /* Espacio vertical para que el brillo respire arriba/abajo */
+        margin-top: -40px; 
+        margin-bottom: -40px;
+    }
+
+    /* 3. TRACK: El GAP debe ser igual a la suma de los "aires" laterales */
+    .carousel-track {
+        display: flex;
+        /* Gap de 40px = 20px de aire a la derecha de tarjeta A + 20px a la izquierda de tarjeta B */
+        gap: 40px; 
+        align-items: center;
+        /* Centramos la primera tarjeta en el slot */
+        padding-left: 20px; 
+    }
+
+    /* 4. TARJETA: Ancho fijo para que el JS no se confunda */
+    .curso-card-neon {
+        flex: 0 0 270px; /* Ancho real de la tarjeta */
+        min-width: 270px;
+        max-width: 270px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        font-size: 0.2rem;
+    }
+
+    .curso-card-neon:hover {
+        transform: scale(1.05); /* Ahora tiene espacio para crecer */
+        box-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+    }
+
+    /* Ajustes de botones para que no estorben */
+    .btn-whatsapp-informes { padding: 8px; font-size: 0.7rem; }
+    .curso-footer h3 { font-size: 0.8rem; }
+}
+
+/* --- AJUSTES PARA PANTALLAS MUY PEQUEÑAS --- */
+@media (max-width: 480px) {
+    .carousel-wrapper {
+        padding: 0 40px; /* Menos espacio lateral para las flechas */
+    }
+
+    .carousel-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+
+    .neon-title-box h2 {
+        font-size: 0.9rem;
+    }
+}
+

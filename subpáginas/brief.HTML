@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicita tu Brief - El Javo</title>
+    <link rel="stylesheet" href="../estilos/style.css">
+    <link rel="stylesheet" href="../subpáginas/estilos/brief.css"> </head>
+<body>
+    <div class="bg-texture"></div>
+
+    <div class="main-container">
+        <header class="brief-header">
+            <a href="../index.HTML" class="back-btn">← VOLVER</a>
+            <h1 class="red-title">SOLICITA TU BRIEF AHORA</h1>
+            <p class="white-subtitle">TRATO DIRECTO | EXCELENCIA EN AUDIO</p>
+        </header>
+
+        <form action="https://formsubmit.co/TU-CORREO@email.com" method="POST" class="brief-form">
+            <fieldset>
+                <legend>1. DATOS DEL PROYECTO</legend>
+                <div class="input-group">
+                    <label>Nombre de la Marca/Empresa:</label>
+                    <input type="text" name="empresa" required placeholder="Ej. Global Care">
+                </div>
+                <div class="input-group">
+                    <label>Título del Proyecto:</label>
+                    <input type="text" name="titulo" required placeholder="Ej. Campaña Verano 2024">
+                </div>
+                <div class="input-group">
+                    <label>Servicio Requerido:</label>
+                    <select name="servicio">
+                        <option value="locucion">Locución</option>
+                        <option value="doblaje">Doblaje</option>
+                        <option value="direccion">Dirección Artística</option>
+                        <option value="diseno">Diseño de Audio</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>2. ESPECIFICACIONES TÉCNICAS</legend>
+                <div class="grid-inputs">
+                    <div class="input-group">
+                        <label>Duración estimada:</label>
+                        <input type="text" name="duracion" placeholder="Segundos o minutos">
+                    </div>
+                    <div class="input-group">
+                        <label>Formato de entrega:</label>
+                        <input type="text" name="formato" placeholder="WAV, MP3, etc.">
+                    </div>
+                </div>
+                <div class="input-group checkbox-group">
+                    <label>¿Requiere limpieza y masterización?</label>
+                    <select name="masterizacion">
+                        <option value="si">Sí</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>3. USO Y DIFUSIÓN (DERECHOS)</legend>
+                <div class="input-group">
+                    <label>Medio de difusión:</label>
+                    <input type="text" name="medio" placeholder="Redes, Radio, TV, Cine...">
+                </div>
+                <div class="input-group">
+                    <label>Tiempo de vigencia:</label>
+                    <select name="vigencia">
+                        <option value="3meses">3 Meses</option>
+                        <option value="6meses">6 Meses</option>
+                        <option value="1ano">1 Año</option>
+                        <option value="indefinido">Indefinido</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>4. DIRECCIÓN CREATIVA</legend>
+                <div class="input-group">
+                    <label>Tono deseado:</label>
+                    <input type="text" name="tono" placeholder="Institucional, Empático, Dinámico...">
+                </div>
+                <div class="input-group">
+                    <label>Referencia de estilo (AXON, KRON, etc.):</label>
+                    <input type="text" name="referencia">
+                </div>
+                <div class="input-group">
+                    <label>¿Contamos con guion final?</label>
+                    <textarea name="guion" placeholder="Pega tu guion aquí o menciona si lo enviarás por separado"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>5. TIEMPOS</legend>
+                <div class="input-group">
+                    <label>Fecha límite de entrega:</label>
+                    <input type="date" name="deadline">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">ENVIAR BRIEF</button>
+        </form>
+    </div>
+</body>
+</html>

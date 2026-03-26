@@ -1,0 +1,746 @@
+/* ============================================================
+   DEMOS DOBLAJE - CSS ESPECÍFICO (TEMA PURPLE NEON)
+   ============================================================ */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Esto mata cualquier espacio extra a la derecha */
+}
+
+   .main-container {
+    width: 100%;
+    overflow-x: hidden; /* Evita scrolls horizontales accidentales */
+}
+/* --- RESET Y VARIABLES --- */
+:root {
+    --purple-neon: #8147ff; /* Morado base */
+    --purple-glow: rgba(129, 71, 255, 0.5); /* Resplandor suave */
+    --panal-bg: url('assets/images/panal-abeja-bg.png'); /* Ruta a tu fondo */
+    --metal-gradient: radial-gradient(circle, #444 0%, #111 100%);
+    --font-cyber: 'Montserrat', sans-serif;
+    --font-base: 'Antonio', sans-serif;
+}
+
+body.dubbing-theme {
+    background-color: var(--dark-bg);
+    background-image: url('../../assets/header/fondo-panal.png');
+    color: white;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 80px; /* Espacio para la navbar fija */
+}
+
+
+/* ============================================================
+   NAVEGACIÓN (TEMA CIAN)
+   ============================================================ */
+/* --- 1. BARRA DE NAVEGACIÓN FIJA --- */
+.mini-logo {
+    height: 60px; /* Tamaño del logo un 30% más pequeño como pediste */
+    width: auto;
+}
+
+
+.navbar-fixed {
+    position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+    background: #000; display: flex; justify-content: center;
+    align-items: center; z-index: 1000; border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+}
+
+.back-btn {
+    padding: 10px 25px; background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(129, 71, 255, 0.5); color: #fff;
+    border-radius: 5px; text-decoration: none; font-weight: 700;
+}
+/* HOVER: El neón se enciende */
+.back-btn.glass-btn-purple:hover {
+    background: #8147ff;
+    box-shadow: 0 0 15px #8147ff, 0 0 30px rgba(129, 71, 255, 0.6);
+    text-shadow: 0 0 5px #fff;
+    transform: translateY(-3px); /* Sube un poco */
+}
+
+/* ACTIVE: Se hunde y brilla más fuerte */
+.back-btn.glass-btn-purple:active {
+    transform: translateY(2px) scale(0.95); /* Se hunde */
+    box-shadow: 0 0 10px #8147ff, inset 0 0 10px rgba(0,0,0,0.5);
+    filter: brightness(1.4);
+    transition: all 0.1s;
+}
+/* Contenedor interno para alinear elementos */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Volver a la izq, Hamburguesa a la der */
+    align-items: center;
+    position: relative;
+}
+
+/* --- MENÚ HAMBURGUESA --- */
+.menu-hamburguesa {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Por encima del menú */
+}
+
+.menu-hamburguesa span {
+    width: 100%;
+    height: 4px;
+    background: #8147ff; /* Morado neón */
+    box-shadow: 0 0 10px rgba(129, 71, 255, 0.8);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- LISTA DESPLEGABLE --- */
+.nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(10, 10, 10, 0.98); /* Un poco más oscuro */
+    backdrop-filter: blur(15px);
+    border-left: 2px solid #8147ff;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9998; /* Justo debajo de la barra pero arriba del contenido */
+}
+
+.nav-menu.active {
+    right: 0; /* Se desliza hacia adentro */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* Animación de la hamburguesa (X) */
+.menu-hamburguesa.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+
+p, .tagline{
+    font-family: 'Antonio', sans-serif;
+    font-weight: 500;                   /* Grosor intermedio/fuerte */
+    font-size: 1.5rem;                  /* Tamaño grande para PC */
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff !important;;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* --- CLASES REUTILIZABLES --- */
+.neon-text-purple {
+    font-family: var(--font-cyber);
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px var(--purple-glow), 0 0 20px var(--purple-neon);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.tagline-white {
+    font-size: 1.2rem;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    display: block;      /* Asegura que ocupe todo el ancho para estar centrado */
+    width: 100%;
+}
+.trajectory-section p.tagline-white {
+    margin-top: 10px;
+    font-family: var(--font-base); /* Usa Antonio para que se vea premium */
+}
+/*Encabezado Trayectoria
+
+/* --- ICONOS DE CÍRCULOS METÁLICOS --- */
+/* Base para todos los círculos metálicos de personajes */
+/* ============================================================
+   EFECTO DE DESBORDE DE CÍRCULOS (AGRANDAR Y DESBORDAR)
+   ============================================================ */
+.char-circle-metal-static, 
+.char-circle-metal-floating,
+.char-circle-metal-javo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--metal-gradient);
+    border: 4px solid var(--purple-neon);
+    box-shadow: 0 0 20px var(--purple-glow), inset 0 0 15px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.char-circle-metal-static img,
+.char-circle-metal-floating img,
+.char-circle-metal-javo img {
+    width: 125%;
+    transform: translateX(1%) translateY(10.5px);
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.8));
+    transition: transform 0.3s ease;
+}
+.char-circle-metal-javo img {
+    width: 130% !important;  /* Un poco menos de zoom para que no se corte su cara */
+    left: 50% !important;
+    transform: translateX(5%) scale(1.1) !important;
+}
+
+/* 1. Asegurar que el contenedor padre permita el desborde visual */
+
+.trajectory-section {
+    overflow: visible !important; /* Fuerza al contenedor de la sección a no cortar nada */
+}
+
+.trajectory-grid {
+    overflow: visible !important; /* Fuerza al grid a no cortar nada */
+}
+
+
+/* Hover general para los círculos */
+.trajectory-card:hover .char-circle-metal-static {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--purple-neon), inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.trajectory-card:hover .char-circle-metal-static img {
+    transform: translateY(-5px);
+}
+
+/* --- SECCIÓN TRAYECTORIA ESTILO MICRÓFONO --- */
+
+.trajectory-section {
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+.trajectory-frame {
+    position: relative;
+    padding: 40px 80px;
+    border: 3px solid #00a2ff; /* Color cian del ejemplo, cámbialo a var(--purple-neon) si prefieres morado */
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 4px; /* Rectangular como la imagen */
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.5), 
+                inset 0 0 15px rgba(0, 162, 255, 0.3);
+    max-width: 900px;
+    width: 100%;
+}
+
+/* El Micrófono con Pintura (Lado Derecho) */
+.trajectory-frame::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -60px; /* Lo hace sobresalir del cuadro */
+    transform: translateY(-50%);
+    width: 180px; /* Ajusta según el tamaño de tu imagen */
+    height: 180px;
+    background: url('../assets/images/microfono-pintura.png') no-repeat center;
+    background-size: contain;
+    z-index: 10;
+    pointer-events: none; /* Para que no estorbe al hacer clic */
+}
+
+/* Ajuste del Texto */
+.neon-text-purple {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    color: #fff;
+    text-transform: uppercase;
+    /* Quitamos el clipping si prefieres el texto blanco sólido como en la foto */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+    .trajectory-frame::after {
+        display: none; /* Quitamos el micro en móvil para que no tape el texto */
+    }
+    .trajectory-frame {
+        padding: 30px 20px;
+    }
+}
+
+/* --- SECCIÓN 1: MASTER FRAME (VIDEO) --- */
+.video-hero-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.master-frame-container {
+    width: 85%;
+    max-width: 1100px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 2px solid var(--purple-neon);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: visible; /* Importante para el icono flotante */
+}
+
+/* Títulos y Timecode del Marco */
+.frame-header-cyber {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-cyber);
+    font-size: 0.75rem;
+    color: var(--purple-neon);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+.timecode-cine {
+    color: #fff;
+    font-family: 'Courier New', monospace; /* Tipo de letra de timecode */
+    background: rgba(0,0,0,0.8);
+    padding: 3px 10px;
+    border-radius: 4px;
+    animation: blinkRec 1s infinite;
+}
+
+@keyframes blinkRec {
+    50% { opacity: 0.5; }
+}
+
+/* Wrapper para el Video con Aspect Ratio */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+}
+
+/* Icono Metálico Flotante (El Guasón) */
+.char-circle-metal-floating {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+
+/* --- SECCIÓN 2: TRAYECTORIA --- */
+.trajectory-section {
+    padding: 80px 5%;
+}
+
+.trajectory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trajectory-card {
+    background: rgba(20, 20, 20, 0.7);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid rgba(129, 71, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.trajectory-card:hover {
+    border-color: var(--purple-neon);
+    background: rgba(20, 20, 20, 0.9);
+    transform: translateY(-5px);
+}
+
+.trajectory-card h3 {
+    font-family: var(--font-cyber);
+    color: var(--purple-neon);
+    font-size: 1.1rem;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.trajectory-card p {
+    font-size: 0.95rem;
+    color: #bbb;
+    line-height: 1.5;
+}
+
+
+/* --- SECCIÓN 3: RELEVANCIA --- */
+.relevance-section {
+    padding: 80px 5%;
+    /* Quitamos el fondo de la sección para que la tarjeta resalte sobre el panal */
+    background: transparent; 
+}
+
+.relevance-header {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    /* ESTILOS DE TARJETA MARCADA (Igual que el ejemplo del Director) */
+    background: linear-gradient(135deg, rgba(60, 20, 110, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%);
+    border: 2px solid var(--purple-neon); /* El delineado marcado */
+    border-radius: 20px;
+    padding: 4px; /* Espacio interno para que respire el contenido */
+    box-shadow: 0 0 30px rgba(137, 43, 226, 0.795), /* Resplandor exterior */
+                inset 0 0 15px rgba(0, 0, 0, 0.733); /* Sombra interna para profundidad */
+    backdrop-filter: blur(1px); /* Desenfoque de fondo (Efecto cristal) */
+}
+
+.relevance-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+    /* ESTILOS DE TARJETA MARCADA (Igual que el ejemplo del Director) */
+    background: linear-gradient(135deg, rgba(60, 20, 110, 0.8) 0%, rgba(15, 15, 15, 0.9) 100%);
+    border: 2px solid var(--purple-neon); /* El delineado marcado */
+    border-radius: 20px;
+    padding: 40px; /* Espacio interno para que respire el contenido */
+    box-shadow: 0 0 30px rgba(137, 43, 226, 0.795), /* Resplandor exterior */
+                inset 0 0 15px rgba(0, 0, 0, 0.733); /* Sombra interna para profundidad */
+    backdrop-filter: blur(1px); /* Desenfoque de fondo (Efecto cristal) */
+}
+
+
+
+/* Ajuste específico para el círculo del Javo */
+.char-circle-metal-javo {
+    width: 150px; 
+    height: 150px;
+    flex-shrink: 0;
+    /* Aseguramos que se vea bien dentro de la nueva tarjeta */
+    border: 4px solid var(--purple-neon);
+}
+
+.relevance-content h2 {
+    font-size: 1.4rem;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 0 0 10px var(--purple-glow); /* Brillo en el título */
+}
+
+.relevance-content p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.copy-marketing {
+    font-size: 1.15rem;
+    color: #fff;
+    line-height: 1.6;
+    font-style: italic; /* Toque de marketing */
+    font-weight: 300;
+}
+
+
+/* --- FOOTER DE CONVERSIÓN --- */
+.conversion-footer {
+    max-width: 100%;
+    margin: 0;   /* Elimina cualquier margen residual */
+    padding: 100px 5%;
+    background-color: #000;
+    border-top: 2px solid rgba(129, 71, 255, 0.3);
+    text-align: center;
+    box-sizing: border-box; /* Crucial para que el padding no sume al ancho */
+}
+
+.conversion-footer h2 {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.contact-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Estilos para los botones grandes tipo cristal (Reutiliza la lógica de la Home) */
+.glass-btn-orange, .glass-btn-green {
+    padding: 18px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Botón Naranja (Cotización) */
+.glass-btn-orange {
+    background: rgba(255, 115, 0, 0.2);
+    border: 1px solid rgba(255, 115, 0, 0.5);
+    color: #fff;
+}
+
+.glass-btn-orange:hover {
+    background: #ff7300;
+    box-shadow: 0 0 15px #ff7300, 0 0 30px rgba(255, 115, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+/* Botón Verde (WhatsApp) */
+.glass-btn-green {
+    background: rgba(77, 255, 77, 0.2);
+    border: 1px solid rgba(77, 255, 77, 0.5);
+    color: #fff;
+}
+
+.glass-btn-green:hover {
+    background: #4dff4d;
+    color: #000;
+    box-shadow: 0 0 15px #4dff4d, 0 0 30px rgba(77, 255, 77, 0.6);
+    transform: translateY(-3px);
+}
+
+
+/* --- FOOTER DE CONVERSIÓN (ANCHO TOTAL) --- */
+.conversion-footer {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 80px 5%;
+    background-color: #000;
+    border-top: 2px solid rgba(129, 71, 255, 0.3);
+    text-align: center;
+}
+
+/* --- FOOTER REDES (ANCHO TOTAL) --- */
+.main-footer {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    background-color: #0a0a0a; /* Un gris casi negro para diferenciar */
+    padding: 40px 0;
+    margin-top: 0;             /* Pegado a la sección de arriba */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Contenedor interno para que el TEXTO no se pegue a las orillas */
+.footer-content, .conversion-footer h2, .contact-buttons-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+
+/* ============================================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ============================================================ */
+
+/* Pantallas Medianas (Tablets) */
+@media (max-width: 992px) {
+    .master-frame-container {
+        width: 90%;
+        padding: 10px !important;
+    }
+
+    .video-wrapper {
+        width: 100% !important;
+    display: block !important;
+    position: relative;
+    line-height: 0;        /* Mata cualquier espacio residual */
+    overflow: hidden;      /* Corta lo que sobre del fondo negro */
+    background: transparent !important; /* Por si el fondo del div es negro */
+    }
+
+    video {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        aspect-ratio: 16 / 9;   /* Fuerza a que el video mande sobre el contenedor */
+        object-fit: cover;
+    }
+
+    /* Ocultar icono flotante si estorba */
+    .char-circle-metal-floating {
+        display: none;
+    }
+
+    .trajectory-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    }
+
+    .relevance-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Pantallas Pequeñas (Móviles) */
+@media (max-width: 600px) {
+    .navbar-fixed .nav-container {
+        width: 100%;
+        padding: 0 15px;
+    }
+    
+    .video-hero-section {
+        padding: 30px 0;
+    }
+
+    .master-frame-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .frame-header-cyber {
+        font-size: 0.6rem;
+    }
+
+    .trajectory-grid {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+
+    .neon-text-purple {
+        font-size: 1.5rem;
+    }
+
+    .tagline-white {
+        font-size: 1rem;
+    }
+
+    .char-circle-metal-javo {
+        width: 120px;
+        height: 120px;
+    }
+}

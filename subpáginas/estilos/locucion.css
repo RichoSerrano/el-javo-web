@@ -1,0 +1,874 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- BASE & FONDO PANAL --- */
+.bg-panal {
+    background-color: #0a0a0a;
+    background-image: url('../../assets/header/fondo-panal.png');
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding-top: 80px; /* Espacio para el header fijo */
+}
+
+.container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+/* --- 1. BARRA DE NAVEGACIÓN FIJA --- */
+.navbar-fixed {
+    position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+    background: #000; display: flex; justify-content: center;
+    align-items: center; z-index: 1000; border-bottom: 1px solid rgba(129, 71, 255, 0.2);
+}
+
+.back-btn {
+    padding: 10px 25px; background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(129, 71, 255, 0.5); color: #fff;
+    border-radius: 5px; text-decoration: none; font-weight: 700;
+}
+/* HOVER: El neón se enciende */
+.back-btn.glass-btn-purple:hover {
+    background: #8147ff;
+    box-shadow: 0 0 15px #8147ff, 0 0 30px rgba(129, 71, 255, 0.6);
+    text-shadow: 0 0 5px #fff;
+    transform: translateY(-3px); /* Sube un poco */
+}
+
+/* ACTIVE: Se hunde y brilla más fuerte */
+.back-btn.glass-btn-purple:active {
+    transform: translateY(2px) scale(0.95); /* Se hunde */
+    box-shadow: 0 0 10px #8147ff, inset 0 0 10px rgba(0,0,0,0.5);
+    filter: brightness(1.4);
+    transition: all 0.1s;
+}
+/* Contenedor interno para alinear elementos */
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* Volver a la izq, Hamburguesa a la der */
+    align-items: center;
+    position: relative;
+}
+
+
+/* --- MENÚ HAMBURGUESA --- */
+.menu-hamburguesa {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Por encima del menú */
+}
+
+.menu-hamburguesa span {
+    width: 100%;
+    height: 4px;
+    background: #8147ff; /* Morado neón */
+    box-shadow: 0 0 10px rgba(129, 71, 255, 0.8);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* --- LISTA DESPLEGABLE --- */
+.nav-menu {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    height: calc(100vh - 80px);
+    background: rgba(10, 10, 10, 0.98); /* Un poco más oscuro */
+    backdrop-filter: blur(15px);
+    border-left: 2px solid #8147ff;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 9998; /* Justo debajo de la barra pero arriba del contenido */
+}
+
+.nav-menu.active {
+    right: 0; /* Se desliza hacia adentro */
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* Animación de la hamburguesa (X) */
+.menu-hamburguesa.open span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+.menu-hamburguesa.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+.nav-menu ul {
+    list-style: none;
+    padding: 60px 30px; /* Más espacio superior */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Separación uniforme entre links */
+}
+
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Efecto al pasar el mouse */
+.nav-menu ul li a:hover {
+    color: #8147ff;
+    padding-left: 10px; /* Pequeño desplazamiento a la derecha */
+    text-shadow: 0 0 10px rgba(129, 71, 255, 0.7);
+}
+
+/* Estilo especial para WhatsApp */
+.nav-whatsapp {
+    color: #4dff4d !important;
+    border: 1px solid #4dff4d;
+    padding: 10px !important;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 0 10px rgba(77, 255, 77, 0.2);
+}
+
+.nav-whatsapp:hover {
+    background: #4dff4d;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(77, 255, 77, 0.6);
+}
+
+/* --- 2. HERO & DEMO REEL --- */
+.locucion-hero { text-align: center; padding: 1px 0; }
+
+.neon-text-purple {
+    margin-top: 0; /* <--- Esto lo pega al techo del contenedor */
+    padding-top: 15px;
+    text-shadow: 0 0 15px rgba(129, 71, 255, 0.8), 0 0 30px rgba(129, 71, 255, 1);
+    color: #eee6ff; /* Morado más intenso maqueta */
+    font-weight: 650; font-size: 5rem;
+    letter-spacing: 6px; /* Aumenta o disminuye este valor según tu gusto */
+    text-transform: uppercase; /* Opcional: asegura que esté en mayúsculas para que el espaciado luzca más */
+}
+
+.video-section-wrapper {
+    position: relative; margin: 40px 0; display: flex;
+    justify-content: center; align-items: center;
+}
+.video-section-wrapper {
+    position: relative;
+    
+    /* MODIFICACIÓN AQUÍ */
+    /* El primer número es ARRIBA, el segundo LADOS (auto), el tercero ABAJO */
+    /* Un número negativo "succiona" el elemento hacia arriba */
+    margin: -50px auto 30px; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor Video Glassmorphism */
+.video-wrapper {
+    max-width: 650px; width: 100%; aspect-ratio: 16 / 9; /* Relación de aspecto correcta */
+    background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px);
+    border: 2px solid rgba(129, 71, 255, 0.3); border-radius: 10px; padding: 10px;
+}
+
+.video-player { width: 100%; height: 100%; border-radius: 5px; object-fit: cover; }
+
+/* Iconos Decorativos (Posiciones Corregidas) */
+.deco-icon { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; }
+
+.left-icon { left: -240px; width: 220px; } /* Logo Javo a la izquierda */
+
+/* Contenedor posicionado respecto al video */
+.video-section-wrapper {
+    position: relative;
+    display: inline-block; /* Para que el wrapper no ocupe todo el ancho si no es necesario */
+}
+
+.metal-btn-right {
+    position: absolute;
+    right: -200px; /* Ajusta según qué tan pegado lo quieras al video */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.icon-holder-loc {
+    /* TAMAÑO (Lo escalamos a 120px para que luzca en esta sección) */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 1. FONDO (Tu degradado exacto) */
+    background: linear-gradient(135deg, #a6a6a6 0%, #808080 100%);
+
+    /* 2. EL MARCO (Tu bisel exacto) */
+    border-top: 4px solid #cecece;   
+    border-left: 4px solid #b1b1b1;
+    border-right: 4px solid #6b6b6b;
+    border-bottom: 4px solid #4a4a4a;
+    box-sizing: border-box;
+
+    /* 3. LAS SOMBRAS (Tu efecto cóncavo exacto) */
+    box-shadow: 
+        6px 10px 15px rgba(0, 0, 0, 0.8),
+        inset 0 12px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -8px 10px rgba(255, 255, 255, 0.3),
+        inset 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. EL PERSONAJE POP-OUT (Tu lógica de desborde) */
+.pop-out-loc {
+    width: 100%; /* Un poco más grande que el círculo */
+    height: auto;
+    position: absolute;
+    bottom: -11px; /* Sobresale hacia abajo */
+    left: 55%;
+    transform: translateX(-50%) scale(1.1); /* Centrado y con tu escala */
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+}
+
+/* TRAYECTORIA COMO IMAGEN DORADA */
+.trajectory-img-container { 
+    margin-top: -85px;    /* <--- Ajusta este número. Más negativo = más arriba */
+    margin-bottom: 20px;  /* Espacio con respecto a los botones de abajo */
+    display: flex;
+    justify-content: center;
+    position: relative;   /* Ayuda a que el z-index funcione si es necesario */
+    z-index: 5;           /* Para que quede por encima de sombras si se tocan */
+}
+
+.trajectory-img { 
+    width: 900px; /* Tamaño sugerido para que se vea imponente como en la maqueta */
+    max-width: 90%; /* Para que no se salga en pantallas de celular */
+    height: auto; 
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); /* Brillo dorado suave opcional */
+}
+
+/* --- CONTENEDOR DE BLOQUE --- */
+.contact-buttons-row {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    
+    /* CONTROL DE SEPARACIÓN (Punto 2) */
+    gap: 100px; /* Reducido de 60px para que se vea más compacto */
+    
+    /* ACERCAR AL HERO/TRAYECTORIA (Punto 3) */
+    margin-top: -45px; /* Valor negativo más alto para "succionarlo" hacia arriba */
+    
+    position: relative;
+    z-index: 10;
+}
+.metal-contact-btn {
+    display: flex; align-items: center; text-decoration: none; position: relative;
+    cursor: pointer; transition: transform 0.2s ease;
+}
+/* --- ESTILO DE LOS BOTONES --- */
+.btn-body {
+    min-width: 190px;
+    text-align: center;
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    color: #fff; 
+    font-weight: 700;
+    font-size: 1.2rem;
+    z-index: 5;
+    box-sizing: border-box;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Hace que el texto resalte */
+
+    /* EL SECRETO METÁLICO: 4 bordes de colores distintos */
+    border-top: 3px solid rgba(255,255,255,0.4);    /* Luz superior */
+    border-left: 2px solid rgba(255,255,255,0.2);   /* Luz lateral */
+    border-right: 2px solid rgba(0,0,0,0.2);        /* Sombra lateral */
+    border-bottom: 5px solid rgba(0,0,0,0.6);       /* Sombra base profunda */
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+/* Efecto al hacer clic (se hunde) */
+.btn-body:active {
+    transform: translateY(2px);
+    border-bottom-width: 2px;
+}
+
+.red-btn-replica .btn-body { background: linear-gradient(180deg, #ff4d4d, #f72b2b); }
+.green-btn-replica .btn-body { background: linear-gradient(180deg, #4dff4d, #2bf72b); }
+
+.choose-text { color: #fff; font-size: 0.9rem; font-weight: 900; line-height: 1.3; }
+
+
+/* --- SECCIÓN VOZ VERSÁTIL --- */
+
+/* --- AJUSTES DE ESPACIADO GENERAL --- */
+.voz-versatil-section {
+    padding: 100px 0; /* Aumentamos el espacio arriba y abajo (de 60 a 100) */
+    position: relative;
+    overflow: visible; /* Para que el micrófono y ondas no se corten */
+}
+
+/* --- CONTENEDOR DE CABECERA (ONDA + BOTÓN + MIC) --- */
+.header-voz-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /* Más espacio respecto a la tarjeta de Javo */
+}
+
+/* Imagen de Ondas Detrás */
+.ondas-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado perfecto detrás del botón */
+    width: 1050px; /* Ajusta según el ancho de tu imagen de ondas */
+    height: auto;
+    z-index: 1; /* Por debajo del botón */
+    pointer-events: none; /* Para que no interfiera si alguien quiere hacer click */
+    opacity: 0.8;
+}
+
+/* Botón Azul (Ajuste de Z-index) */
+.blue-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 600px; 
+    padding: 15px 40px;
+    border-radius: 12px;
+    
+    /* Degradado azul con reflejo metálico central */
+    background: linear-gradient(180deg, #3366ff 0%, #668cff 50%, #002299 100%);
+    
+    /* Bordes de luz y sombra igual que los círculos */
+    border-top: 4px solid #80aaff;   /* Brillo superior celeste */
+    border-left: 2px solid #4d79ff;
+    border-right: 2px solid #001a66;
+    border-bottom: 6px solid #000c33; /* Sombra base gruesa */
+
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Micrófono Standalone */
+.mic-standalone {
+    position: absolute;
+    right: 1%; /* Ajustado para que no choque con el botón */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px; /* Lo agrandamos como pediste */
+    z-index: 10;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
+/* --- AJUSTE DE LA TARJETA DE ABAJO --- */
+.description-box-wrapper {
+    margin-top: 40px; /* Espacio extra si es necesario */
+}
+
+.voz-versatil-section {
+    padding: 60px 0;
+    position: relative;
+}
+
+/* 1. Pildora Azul Superior */
+.tag-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/* 1. Píldora Azul con el mismo estilo del botón de descarga */
+.blue-tag-pill {
+    /* Mismo padding y alineación */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 600px; /* Ajustado para el texto largo */
+    padding: 12px 30px;
+    border-radius: 10px; /* Cambiado a 10px para que coincida con el botón de descarga */
+    
+    /* Degradado en Azul (Siguiendo la lógica del rojo/verde anterior) */
+    background: linear-gradient(180deg, #4d79ff, #0033cc);
+    
+    /* El detalle clave: El borde inferior oscuro que da profundidad */
+    border-bottom: 4px solid rgba(0, 0, 0, 0.5); 
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Brillo sutil arriba */
+    
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+    /* Sombra exterior */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+/* Ajuste para el Micrófono para que no tape el texto */
+.mic-pop-out {
+    position: absolute;
+    right: -30px; /* Lo moví un poco hacia afuera */
+    top: -40px;
+    width: 100px;
+    filter: drop-shadow(0 8px 10px rgba(0,0,0,0.6));
+    z-index: 10;
+}
+
+/* 2. Caja de Descripción */
+.description-box-wrapper {
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 40px auto;
+    position: relative;
+    padding-left: -5px; /* Espacio de seguridad para el círculo */
+
+}
+
+.javo-circle-pop {
+    /* Usamos exactamente tus reglas del .icon-holder de inicio */
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    flex-shrink: 0;
+
+    /* 1. MISMO FONDO METAL */
+    background: linear-gradient(135deg, #a6a6a6 0%, #808080 100%);
+
+    /* 2. MISMO BISEL (Luz y Sombra) */
+    border-top: 4px solid #cecece;   
+    border-left: 4px solid #b1b1b1;
+    border-right: 4px solid #6b6b6b;
+    border-bottom: 4px solid #4a4a4a;
+    box-sizing: border-box;
+
+    /* 3. MISMAS SOMBRAS (Ajustadas al tamaño 180px) */
+    box-shadow: 
+        6px 10px 15px rgba(0, 0, 0, 0.8),
+        inset 0 12px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -8px 10px rgba(255, 255, 255, 0.3);
+}
+
+.cartoon-img {
+    width: 100%;
+    position: absolute;
+    bottom: 5px;
+    transform: translateX(-50%);
+    transform: scaleX(-1);
+}
+
+.blue-glass-description {
+    /* --- EFECTO CRISTAL (BIO-GLASS-CARD REPLICA) --- */
+    background: rgba(0, 85, 255, 0.15) !important; /* Fondo oscuro transparente */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px; /* Bordes redondeados como la original */
+    padding: 30px 40px 30px 80px; /* Mantenemos el espacio para el círculo de Javo */
+    
+    /* --- BORDE NEÓN AZUL --- */
+    border: 2px solid #0055ff !important; /* Azul Neón Base */
+    box-shadow: 0 0 20px rgba(0, 85, 255, 0.3); /* Resplandor azul suave */
+    
+    /* --- POSICIONAMIENTO --- */
+    margin-left: -60px; 
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 10;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+/*---Caja Play List---*/
+/* Arriba | Lados | Abajo */
+.demo-reel-section { padding: 6px 0 60px; text-align: center; }
+
+.playlist-main-title {
+    font-family: 'Anton', sans-serif; /* Aplicamos Anton */
+    text-transform: uppercase;
+    color: #fdeaea;
+    font-size: 3.5rem;
+    font-weight: 150;
+    text-shadow: 
+        0 0 1px #fff, 
+        0 0 5px #ff0000, 
+        0 0 20px #ff0000, 
+        0 0 40px #ff0000;margin-bottom: -30px;
+    letter-spacing: 3px;
+}
+
+.playlist-subtitle {
+    font-family: 'Anton', sans-serif; /* Aplicamos Anton */
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 100;
+    margin-bottom: 40px;
+    letter-spacing: 2.5px;
+}
+
+.playlist-container-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    background: #000;
+    border: 5px solid #1a1a1a;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.playlist-list { border-right: 2px solid #333; }
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.playlist-item:hover { background: #111; }
+.playlist-item.active { background: #1a1a1a; }
+
+.play-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 15px;
+}
+
+.red-dot {
+    width: 8px;
+    height: 8px;
+    background: #ff0000;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.active .red-dot { opacity: 1; box-shadow: 0 0 8px #ff0000; }
+
+.play-indicator i { color: #fff; font-size: 1.4rem; }
+
+.track-title {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.javo-frame {
+    width: 100%;       /* Ocupa todo el espacio derecho */
+    height: 100%;      /* Se estira al alto de la lista */
+    display: flex;     /* Activamos el modo centrado */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    background-color: #000;  /* Fondo negro por si la foto es pequeña */
+}
+
+.javo-frame img {
+    width: 90%;        /* Aquí controlas el tamaño de la foto */
+    height: 90%;       /* Para que no toque los bordes arriba/abajo */
+    object-fit: cover; /* Mantiene la proporción sin deformar */
+    object-position: center top; 
+    border-radius: 4px; /* Opcional: un toque sutil en las esquinas */
+}
+
+/* --- Footer Principal (Datos y Redes) --- */
+.main-footer {
+    background: #111;
+    padding: 40px 0;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #222;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Iconos de Redes Sociales Biselados */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    /* Efecto Biselado similar a tus botones */
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #000;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background: #444;
+    color: #ffaa00; /* Color de realce (Naranja como tu botón de Brief) */
+}
+
+.footer-info {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 13px;
+}
+
+
+/* Animaciones */
+@keyframes rotate-border {
+    to { filter: hue-rotate(360deg); }
+}
+/* Responsivo para celulares */
+/* --- RESPONSIVO PARA CELULARES (CORREGIDO) --- */
+@media (max-width: 768px) {
+
+    /* 1. OCULTAR SECCIONES NO DESEADAS EN MÓVIL */
+    /* 1. OCULTAR SOLO LA BARRA AZUL Y ONDAS */
+    .header-voz-container, 
+    .ondas-bg, 
+    .mic-standalone { 
+        display: none !important; 
+    }
+
+    /* 2. AJUSTE DE HERO Y VIDEO */
+    .neon-text-purple {
+        font-size: 2.8rem !important;
+        letter-spacing: 2px;
+    }
+
+    /* 3. VIDEO Y CONTENEDOR */
+    .video-section-wrapper {
+        margin: 10px auto !important;
+        width: 95%;
+        display: block; /* Cambiamos flex por block para centrar fácil */
+    }
+
+    .video-wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    /* 4. IMAGEN 40 AÑOS (TRAYECTORIA) */
+    /* La separamos del video para que no se encime */
+    .trajectory-img-container {
+        margin-top: 10px !important; /* Quitamos el valor negativo que la subía */
+        margin-bottom: 10px !important;
+    }
+
+    .trajectory-img {
+        width: 100% !important; /* Ajuste de tamaño para pantalla pequeña */
+    }
+
+    /* 5. SECCIÓN DE CONTACTO (BOTONES) */
+    .contact-buttons-row {
+        flex-direction: row !important; /* En línea como la maqueta */
+        flex-wrap: wrap; /* Por si el espacio es muy pequeño */
+        justify-content: center;
+        gap: 15px !important;
+        margin: 20px 0 !important;
+    }
+
+    .choose-text {
+        width: 100%; /* Obliga al texto a estar arriba de los botones */
+        text-align: center;
+        margin-bottom: 10px;
+        order: -1;
+    }
+
+    .btn-body {
+        min-width: 160px !important; /* Más pequeños para que quepan juntos */
+        font-size: 0.9rem !important;
+        padding: 8px 15px !important;
+    }
+    /* 5.5 TARJETA AZUL (DESCRIPTION BOX) CON MICRÓFONO */
+    .description-box-wrapper {
+        flex-direction: column;
+        align-items: center;
+       margin-top: -110px !important; /* Espacio para el círculo de Javo */
+        padding: 0 15px;
+    }
+    .blue-glass-description {
+        margin-left: 0 !important;
+        margin-top: -50px; /* Sube para abrazar el círculo */
+        padding: 60px 20px 30px 20px !important; /* Espacio arriba para el círculo */
+        text-align: center;
+        width: 100%;
+        position: relative; 
+        overflow: visible !important; 
+    }
+  
+
+    /* 6. PLAYLIST / REPRODUCTOR MÓVIL */
+    .demo-reel-section {
+        padding: 0 !important; /* Quitamos padding superior */
+        margin-top: -60px !important; /* Sube la sección hacia la tarjeta azul */
+        position: relative;
+        z-index: 5;    
+    
+    }
+/* Título principal: LOCUCIÓN PROFESIONAL */
+    .playlist-main-title {
+        font-size: 1.8rem !important;
+        letter-spacing: 2.5px; /* <--- Ajusta este valor (px o rem) */
+        margin-bottom: 10px !important;
+    }
+
+    /* Subtítulo: Demos de voz para... */
+    .playlist-subtitle {
+        font-size: 0.9rem !important;
+        letter-spacing: 1px; /* Un espacio más sutil para el texto largo */
+        line-height: 1.4;    /* Ayuda a que no se amontonen las líneas */
+    }
+
+    .playlist-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+
+    .playlist-container-grid {
+        display: none !important; /* Oculta la lista de PC */
+    }
+
+    .mobile-player-container {
+        display: flex !important; /* Muestra el reproductor compacto */
+        flex-direction: column;
+        align-items: center;
+        background: rgba(20, 20, 20, 0.9);
+        border: 1px solid #8147ff;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 10px auto;
+        width: 90%;
+    }
+
+    /* 1. Estilo general de la barra (el carril) */
+#mobile-seekbar {
+    -webkit-appearance: none; /* Quita el diseño por defecto de Android/iOS */
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    outline: none;
+    margin: 15px 0;
+}
+
+/* 2. El PUNTITO (Thumb) para Chrome, Safari y Edge */
+#mobile-seekbar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #8147ff; /* Tu morado */
+    border: 2px solid #fff; /* Borde blanco para que resalte */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px #8147ff, 0 0 20px rgba(129, 71, 255, 0.6); /* EFECTO NEÓN */
+    transition: all 0.2s ease;
+}
+
+/* 3. El PUNTITO para Firefox */
+#mobile-seekbar::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #8147ff;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px #8147ff;
+}
+
+/* 4. Efecto al tocarlo (Active) */
+#mobile-seekbar:active::-webkit-slider-thumb {
+    transform: scale(1.3); /* Crece un poco al tocarlo */
+    filter: brightness(1.2);
+}
+
+    
+}
+/* Fuera del media query para que esté oculto en PC */
+.mobile-player-container { display: none; }
+
