@@ -1032,5 +1032,61 @@ body {
         box-sizing: border-box;
     }
 
-    
+    /* Contenedor: Reducimos el espacio entre tarjetas */
+    .cards-container {
+        padding: 20px 10px !important;
+        gap: 20px !important;
+    }
+
+    /* La Tarjeta: Más delgada y con menos relleno interno */
+    .glass-card {
+        width: 90% !important; /* No ocupa el 100% para dejar aire a los lados */
+        max-width: 340px;      /* Evita que se vea gigante en teléfonos grandes */
+        padding: 20px !important; 
+        border-radius: 30px !important; /* Curva más suave para móvil */
+        margin: 0 auto;
+    }
+
+    /* Cabecera: Reducimos textos e iconos */
+    .card-header {
+        margin-bottom: 15px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .card-header h3 {
+        font-size: 1.4rem !important; /* Nombre más pequeño */
+    }
+
+    .card-header h3 span:last-child {
+        font-size: 1.8rem !important; /* Rol (Director/Actor) ajustado */
+    }
+
+    /* Icono Neón: Lo hacemos más pequeño para que no estorbe */
+    .icon-neon-circle {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .icon-neon-circle img.card-icon {
+        width: 60px !important; /* Tamaño del dibujo */
+        height: 60px !important;
+    }
+
+    /* Listas: Texto más compacto para que quepa más contenido */
+    .card-content h4 {
+        font-size: 1rem !important;
+        margin: 15px 0 8px !important;
+    }
+
+    .card-content li {
+        font-size: 0.9rem !important; /* Letra un poco más pequeña */
+        margin-bottom: 5px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Pleca de Animación: Menos invasiva */
+    .animacion-highlight {
+        margin: 10px -10px 0 !important;
+        padding: 10px 15px !important;
+    }
 }
