@@ -945,17 +945,8 @@ body {
         margin: 0 !important;
     }
 
-    /* 2. Sección Hero (El contenedor de Javo y el Título) */
-    .hero-trayectoria {
-        display: flex;
-        flex-direction: column; /* Foto arriba, texto abajo */
-        align-items: center;
-        text-align: center;
-        padding: 10px 15px 20px !important;
-        gap: 20px;
-    }
-
-    /* 3. La Foto de Javier */
+       
+    /* 1. La Foto de Javier */
     .profile-frame {
         display: block !important;
         width: 160px !important; /* Tamaño de la foto en móvil */
@@ -969,12 +960,29 @@ body {
         object-fit: contain;
     }
 
+   /* 2. Sección Hero (El contenedor de Javo y el Título) */
+    .hero-trayectoria {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        height: auto !important;
+    }
+
+    /* 3. LA SOLUCIÓN AL "ESTIRAMIENTO":
+       Usamos un margen negativo que se ajusta según el alto de la pantalla (vh)
+       Esto neutraliza el espacio extra que crea el navegador al alargar la ventana. */
     .transition-button-container {
-        margin: 20px auto !important; /* Margen fijo: 20px arriba, 40px abajo */
-        padding: 0 15px !important;
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        position: relative !important;
+        /* margin-top: -15vh acerca el botón al título proporcionalmente al alto */
+        margin-top: 10vh !important; 
+        margin-bottom: 30px !important;
+        z-index: 10;
+        transform: translateY(0); /* Evita saltos de animaciones */
+    }
+
+    /* 4. Ajuste fino del botón */
+    .transition-button {
+        width: 90% !important;
+        margin: 0 auto !important;
     }
     /* 1. Header: Logo a la izquierda, Botón a la derecha */
     /* Targeteamos el contenedor real: .download-wrapper */
