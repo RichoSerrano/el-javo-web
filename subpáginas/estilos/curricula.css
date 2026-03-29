@@ -951,8 +951,8 @@ body {
         flex-direction: column; /* Foto arriba, texto abajo */
         align-items: center;
         text-align: center;
-        padding: 20px 15px;
-        gap: 20px;
+        padding: 10px 15px 20px !important;
+        gap: 10px;
     }
 
     /* 3. La Foto de Javier */
